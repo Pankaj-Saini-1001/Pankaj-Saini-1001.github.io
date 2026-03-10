@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pankaj Saini | Software Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --bg-base: #09090b; /* Zinc 950 */
-            --bg-surface: #18181b; /* Zinc 900 */
-            --accent-primary: #10b981; /* Emerald 500 */
-            --accent-secondary: #0ea5e9; /* Sky 500 */
+            --bg-base: #09090b;
+            /* Zinc 950 */
+            --bg-surface: #18181b;
+            /* Zinc 900 */
+            --accent-primary: #10b981;
+            /* Emerald 500 */
+            --accent-secondary: #0ea5e9;
+            /* Sky 500 */
         }
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-base); 
-            color: #f4f4f5; 
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: #f4f4f5;
             overflow-x: hidden;
         }
 
-        .font-mono { font-family: 'Fira Code', monospace; }
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
 
         /* Engineering Grid Background */
         .bg-grid {
             background-size: 40px 40px;
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
@@ -49,14 +58,15 @@
         }
 
         /* Smooth Fade-in Reveal Effects */
-        .reveal { 
-            opacity: 0; 
-            transform: translateY(30px); 
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .reveal.active { 
-            opacity: 1; 
-            transform: translateY(0); 
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .text-gradient {
@@ -69,10 +79,14 @@
         .btn-glow {
             position: relative;
         }
+
         .btn-glow::before {
             content: '';
             position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
             background: linear-gradient(45deg, #10b981, #0ea5e9, #10b981);
             z-index: -1;
             filter: blur(10px);
@@ -80,23 +94,35 @@
             transition: opacity 0.3s ease;
             border-radius: inherit;
         }
-        .btn-glow:hover::before { opacity: 0.7; }
+
+        .btn-glow:hover::before {
+            opacity: 0.7;
+        }
 
         /* Terminal typing animation cursor */
-        .cursor-blink { animation: blink 1s step-end infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
+
 <body class="relative min-h-screen">
     <div class="fixed inset-0 bg-grid pointer-events-none z-[-1]"></div>
 
     <div class="fixed top-4 w-full z-50 px-4 md:px-8 flex justify-center pointer-events-none">
-        <nav class="w-full max-w-7xl px-5 py-3 bg-zinc-900/60 backdrop-blur-lg border border-white/10 rounded-2xl shadow-2xl flex justify-between items-center pointer-events-auto transition-all">
+        <nav
+            class="w-full max-w-7xl px-5 py-3 bg-zinc-900/60 backdrop-blur-lg border border-white/10 rounded-2xl shadow-2xl flex justify-between items-center pointer-events-auto transition-all">
             <div class="text-xl font-bold tracking-tight flex items-center gap-2 group cursor-pointer">
                 <i data-lucide="code" class="w-6 h-6 text-emerald-500 group-hover:text-sky-400 transition-colors"></i>
                 <span class="font-mono hidden sm:block">Pankaj Saini</span>
             </div>
-            
+
             <div class="hidden md:flex items-center space-x-6 text-sm font-medium font-mono text-zinc-400">
                 <a href="#home" class="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
                     <i data-lucide="home" class="w-4 h-4"></i> ./home
@@ -111,39 +137,49 @@
                     <i data-lucide="layers" class="w-4 h-4"></i> ./stack
                 </a>
             </div>
-            
-            <a href="mailto:mrpankajsaini1001@gmail.com" class="flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/50 hover:bg-emerald-500 hover:text-zinc-950 px-4 py-2 rounded-xl text-sm font-bold transition-all shadow-lg shadow-emerald-500/10">
-                <i data-lucide="send" class="w-4 h-4"></i> <span class="hidden sm:inline">Initialize Contact</span><span class="sm:hidden">Connect</span>
+
+            <a href="mailto:mrpankajsaini1001@gmail.com"
+                class="flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/50 hover:bg-emerald-500 hover:text-zinc-950 px-4 py-2 rounded-xl text-sm font-bold transition-all shadow-lg shadow-emerald-500/10">
+                <i data-lucide="send" class="w-4 h-4"></i> <span class="hidden sm:inline">Initialize Contact</span><span
+                    class="sm:hidden">Connect</span>
             </a>
         </nav>
     </div>
 
     <section id="home" class="min-h-screen flex flex-col justify-center pt-32 pb-12 px-6">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full">
-            
+
             <div class="reveal">
-                <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-full text-xs font-mono text-emerald-400 mb-8">
+                <div
+                    class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-full text-xs font-mono text-emerald-400 mb-8">
                     <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
                     System.out.println("Available for new challenges");
                 </div>
-                
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight leading-tight text-white">
+
+                <h1
+                    class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight leading-tight text-white">
                     Building <span class="text-gradient">Scalable</span> <br>
                     Software Solutions.
                 </h1>
-                
+
                 <p class="text-zinc-400 max-w-xl text-lg font-light mb-10 leading-relaxed">
-                    Full Stack Developer specializing in bridging high-performance backend architectures with seamless, interactive frontends using <span class="text-zinc-200 font-medium border-b border-emerald-500 border-dashed">Angular, NestJS, Spring Boot, and React Native.</span>
+                    Full Stack Developer specializing in bridging high-performance backend architectures with seamless,
+                    interactive frontends using <span
+                        class="text-zinc-200 font-medium border-b border-emerald-500 border-dashed">Angular, NestJS,
+                        Spring Boot, and React Native.</span>
                 </p>
-                
+
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#projects" class="btn-glow bg-emerald-500 text-zinc-950 px-8 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-emerald-400 transition-colors">
+                    <a href="#projects"
+                        class="btn-glow bg-emerald-500 text-zinc-950 px-8 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-emerald-400 transition-colors">
                         Execute Portfolio <i data-lucide="play" class="w-4 h-4 fill-current"></i>
                     </a>
-                    <a href="assets/Pankaj_Saini_Resume.pdf" download="Pankaj_Saini_Resume.pdf" class="bg-zinc-800/50 border border-zinc-700 text-zinc-300 hover:text-white hover:border-zinc-500 px-8 py-3.5 rounded-xl font-medium flex items-center justify-center gap-2 transition-all backdrop-blur-sm">
+                    <a href="assets/Pankaj_Saini_Resume.pdf" download="Pankaj_Saini_Resume.pdf"
+                        class="bg-zinc-800/50 border border-zinc-700 text-zinc-300 hover:text-white hover:border-zinc-500 px-8 py-3.5 rounded-xl font-medium flex items-center justify-center gap-2 transition-all backdrop-blur-sm">
                         <i data-lucide="file-json" class="w-4 h-4"></i> view_resume.pdf
                     </a>
                 </div>
@@ -181,15 +217,22 @@
                     <p class="pl-6">role: <span class="text-amber-300">'Software Developer'</span>,</p>
                     <p class="pl-6">location: <span class="text-amber-300">'Noida, UP'</span>,</p>
                     <p class="pl-6">skills: {</p>
-                    <p class="pl-12">frontend: [<span class="text-amber-300">'Angular'</span>, <span class="text-amber-300">'Material'</span>, <span class="text-amber-300">'Bootstrap'</span>],</p>
-                    <p class="pl-12">backend: [<span class="text-amber-300">'NestJS'</span>, <span class="text-amber-300">'Spring Boot'</span>],</p>
+                    <p class="pl-12">frontend: [<span class="text-amber-300">'Angular'</span>, <span
+                            class="text-amber-300">'Material'</span>, <span class="text-amber-300">'Bootstrap'</span>],
+                    </p>
+                    <p class="pl-12">backend: [<span class="text-amber-300">'NestJS'</span>, <span
+                            class="text-amber-300">'Spring Boot'</span>],</p>
                     <p class="pl-12">mobile: [<span class="text-amber-300">'React Native'</span>],</p>
                     <p class="pl-12">database: [<span class="text-amber-300">'MongoDB'</span>],</p>
-                    <p class="pl-12">tools: [<span class="text-amber-300">'VS Code'</span>, <span class="text-amber-300">'GitHub'</span>, <span class="text-amber-300">'IntelliJ'</span>, <span class="text-amber-300">'Postman'</span>]</p>
+                    <p class="pl-12">tools: [<span class="text-amber-300">'VS Code'</span>, <span
+                            class="text-amber-300">'GitHub'</span>, <span class="text-amber-300">'IntelliJ'</span>,
+                        <span class="text-amber-300">'Postman'</span>]
+                    </p>
                     <p class="pl-6">},</p>
                     <p class="pl-6">getCurrentFocus: <span class="text-rose-400">function</span>() {</p>
                     <p class="pl-12 text-zinc-400">// Delivering highly scalable & secure apps</p>
-                    <p class="pl-12"><span class="text-rose-400">return</span> <span class="text-amber-300">'Building robust user experiences'</span>;</p>
+                    <p class="pl-12"><span class="text-rose-400">return</span> <span class="text-amber-300">'Building
+                            robust user experiences'</span>;</p>
                     <p class="pl-6">}</p>
                     <p>};<span class="cursor-blink text-emerald-500 font-bold">|</span></p>
                 </div>
@@ -200,43 +243,55 @@
     <section id="experience" class="py-24 px-6 relative border-t border-zinc-800/50 bg-zinc-900/20">
         <div class="max-w-4xl mx-auto">
             <div class="mb-16 reveal">
-                <h2 class="text-sm font-mono text-emerald-500 mb-3 flex items-center gap-2"><i data-lucide="git-commit" class="w-4 h-4"></i> ~ ./career --log</h2>
+                <h2 class="text-sm font-mono text-emerald-500 mb-3 flex items-center gap-2"><i data-lucide="git-commit"
+                        class="w-4 h-4"></i> ~ ./career --log</h2>
                 <h3 class="text-3xl md:text-4xl font-bold text-white">Experience Trajectory</h3>
             </div>
 
             <div class="space-y-12">
-                
+
                 <div class="relative md:grid md:grid-cols-5 items-start gap-8 reveal">
                     <div class="hidden md:block col-span-1 text-right pt-2">
                         <span class="font-mono text-sm text-zinc-500">Nov 2024 - Present</span>
                     </div>
-                    
+
                     <div class="md:col-span-4 relative border-l border-zinc-700 pl-6 md:pl-8">
-                        <div class="absolute -left-[9px] top-2.5 w-4 h-4 rounded-full bg-zinc-900 border-2 border-emerald-500 ring-4 ring-zinc-950"></div>
-                        
+                        <div
+                            class="absolute -left-[9px] top-2.5 w-4 h-4 rounded-full bg-zinc-900 border-2 border-emerald-500 ring-4 ring-zinc-950">
+                        </div>
+
                         <div class="glass-card p-6 md:p-8">
                             <div class="mb-5">
                                 <h4 class="text-xl font-bold text-white">Software Developer</h4>
-                                <p class="text-emerald-400 font-mono text-sm mt-1">@ Mathesis Labs Technology Pvt Ltd</p>
-                                <span class="md:hidden font-mono text-xs text-zinc-500 block mt-2">Nov 2024 - Present</span>
+                                <p class="text-emerald-400 font-mono text-sm mt-1">@ Mathesis Labs Technology Pvt Ltd
+                                </p>
+                                <span class="md:hidden font-mono text-xs text-zinc-500 block mt-2">Nov 2024 -
+                                    Present</span>
                             </div>
-                            
+
                             <ul class="space-y-3 text-zinc-400 text-sm leading-relaxed">
                                 <li class="flex gap-3 items-start">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> 
-                                    <span>Developed modular UI components using <strong>Angular Material</strong> and <strong>Bootstrap</strong>, and fixed functionality bugs to enhance overall app stability.</span>
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Developed modular UI components using <strong>Angular Material</strong> and
+                                        <strong>Bootstrap</strong>, and fixed functionality bugs to enhance overall app
+                                        stability.</span>
                                 </li>
                                 <li class="flex gap-3 items-start">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> 
-                                    <span>Built robust backend APIs with <strong>NestJS</strong> for data processing and integrated critical REST APIs for patient records, billing, and dashboard modules.</span>
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Built robust backend APIs with <strong>NestJS</strong> for data processing and
+                                        integrated critical REST APIs for patient records, billing, and dashboard
+                                        modules.</span>
                                 </li>
                                 <li class="flex gap-3 items-start">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> 
-                                    <span>Engineered a mobile app from scratch using <strong>React Native</strong>, designing the UI/UX, integrating core APIs, and optimizing navigation flows and state handling.</span>
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Engineered a mobile app from scratch using <strong>React Native</strong>,
+                                        designing the UI/UX, integrating core APIs, and optimizing navigation flows and
+                                        state handling.</span>
                                 </li>
                                 <li class="flex gap-3 items-start">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i> 
-                                    <span>Maintained version control using <strong>Git</strong> to ensure smooth code collaboration and conflict resolution in a multi-developer environment.</span>
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Maintained version control using <strong>Git</strong> to ensure smooth code
+                                        collaboration and conflict resolution in a multi-developer environment.</span>
                                 </li>
                             </ul>
                         </div>
@@ -247,11 +302,14 @@
                     <div class="hidden md:block col-span-1 text-right pt-2">
                         <span class="font-mono text-sm text-zinc-500">2020 - 2024</span>
                     </div>
-                    
+
                     <div class="md:col-span-4 relative border-l border-zinc-700 pl-6 md:pl-8">
-                        <div class="absolute -left-[9px] top-2.5 w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-600 ring-4 ring-zinc-950"></div>
-                        
-                        <div class="p-6 border border-zinc-800/50 rounded-xl bg-zinc-900/30 flex flex-col sm:flex-row items-center gap-6">
+                        <div
+                            class="absolute -left-[9px] top-2.5 w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-600 ring-4 ring-zinc-950">
+                        </div>
+
+                        <div
+                            class="p-6 border border-zinc-800/50 rounded-xl bg-zinc-900/30 flex flex-col sm:flex-row items-center gap-6">
                             <div class="p-4 bg-zinc-800/50 rounded-lg text-zinc-400">
                                 <i data-lucide="graduation-cap" class="w-6 h-6"></i>
                             </div>
@@ -270,81 +328,107 @@
 
     <section id="projects" class="py-24 px-6 max-w-7xl mx-auto border-t border-zinc-800/50">
         <div class="mb-16 reveal">
-            <h2 class="text-sm font-mono text-emerald-500 mb-3 flex items-center gap-2"><i data-lucide="terminal" class="w-4 h-4"></i> ~ ./projects --featured</h2>
+            <h2 class="text-sm font-mono text-emerald-500 mb-3 flex items-center gap-2"><i data-lucide="terminal"
+                    class="w-4 h-4"></i> ~ ./projects --featured</h2>
             <h3 class="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
                 System Architectures <i data-lucide="cpu" class="w-8 h-8 text-zinc-600"></i>
             </h3>
         </div>
-        
+
         <div class="grid lg:grid-cols-3 gap-6">
             <div class="glass-card p-1 group reveal flex flex-col h-full">
                 <div class="bg-zinc-900 p-6 rounded-[0.85rem] h-full flex flex-col relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-bl-full blur-2xl transition-all group-hover:bg-sky-500/20"></div>
-                    
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-bl-full blur-2xl transition-all group-hover:bg-sky-500/20">
+                    </div>
+
                     <div class="flex justify-between items-start mb-6 z-10">
                         <div class="p-3 bg-zinc-800 rounded-lg text-sky-400 border border-zinc-700">
                             <i data-lucide="stethoscope" class="w-6 h-6"></i>
                         </div>
-                        <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="external-link" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i
+                                data-lucide="external-link" class="w-5 h-5"></i></a>
                     </div>
-                    
+
                     <h3 class="text-xl font-bold mb-3 text-white z-10">Dentistry AI Platform</h3>
                     <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow z-10">
-                        Enterprise-grade clinical platform managing patient logic, dynamic billing, and staff schedules. Unified architecture spanning web admins and mobile end-users.
+                        Enterprise-grade clinical platform managing patient logic, dynamic billing, and staff schedules.
+                        Unified architecture spanning web admins and mobile end-users.
                     </p>
-                    
+
                     <div class="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/80 z-10">
-                        <span class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-sky-300">Angular</span>
-                        <span class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-rose-300">NestJS</span>
-                        <span class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-emerald-300">React Native</span>
+                        <span
+                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-sky-300">Angular</span>
+                        <span
+                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-rose-300">NestJS</span>
+                        <span
+                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-emerald-300">React
+                            Native</span>
                     </div>
                 </div>
             </div>
 
             <div class="glass-card p-1 group reveal flex flex-col h-full" style="transition-delay: 0.1s;">
                 <div class="bg-zinc-900 p-6 rounded-[0.85rem] h-full flex flex-col relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-bl-full blur-2xl transition-all group-hover:bg-emerald-500/20"></div>
-                    
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-bl-full blur-2xl transition-all group-hover:bg-emerald-500/20">
+                    </div>
+
                     <div class="flex justify-between items-start mb-6 z-10">
                         <div class="p-3 bg-zinc-800 rounded-lg text-emerald-400 border border-zinc-700">
                             <i data-lucide="wallet" class="w-6 h-6"></i>
                         </div>
-                        <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="github"
+                                class="w-5 h-5"></i></a>
                     </div>
-                    
+
                     <h3 class="text-xl font-bold mb-3 text-white z-10">Lend Ledger App</h3>
                     <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow z-10">
-                        Fintech mobile application optimizing peer-to-peer lending records. Implemented complex state management, secure REST integration, and fluid navigation flows.
+                        Fintech mobile application optimizing peer-to-peer lending records. Implemented complex state
+                        management, secure REST integration, and fluid navigation flows.
                     </p>
-                    
+
                     <div class="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/80 z-10">
-                        <span class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-green-300">Spring Boot</span>
-                        <span class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-cyan-300">React Native</span>
-                        <span class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-emerald-300">MongoDB</span>
+                        <span
+                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-green-300">Spring
+                            Boot</span>
+                        <span
+                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-cyan-300">React
+                            Native</span>
+                        <span
+                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-emerald-300">MongoDB</span>
                     </div>
                 </div>
             </div>
 
             <div class="glass-card p-1 group reveal flex flex-col h-full" style="transition-delay: 0.2s;">
                 <div class="bg-zinc-900 p-6 rounded-[0.85rem] h-full flex flex-col relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-bl-full blur-2xl transition-all group-hover:bg-amber-500/20"></div>
-                    
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-bl-full blur-2xl transition-all group-hover:bg-amber-500/20">
+                    </div>
+
                     <div class="flex justify-between items-start mb-6 z-10">
                         <div class="p-3 bg-zinc-800 rounded-lg text-amber-400 border border-zinc-700">
                             <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
                         </div>
-                        <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="github"
+                                class="w-5 h-5"></i></a>
                     </div>
-                    
+
                     <h3 class="text-xl font-bold mb-3 text-white z-10">AEW Web Application</h3>
                     <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow z-10">
-                        Secure full-stack portal leveraging JWT authentication and role-based access. Designed interactive data charting modules backed by high-speed MongoDB queries.
+                        Secure full-stack portal leveraging JWT authentication and role-based access. Designed
+                        interactive data charting modules backed by high-speed MongoDB queries.
                     </p>
-                    
+
                     <div class="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/80 z-10">
-                        <span class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-sky-300">Angular</span>
-                        <span class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-green-300">Spring Boot</span>
-                        <span class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-zinc-300">MongoDB</span>
+                        <span
+                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-sky-300">Angular</span>
+                        <span
+                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-green-300">Spring
+                            Boot</span>
+                        <span
+                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-zinc-300">MongoDB</span>
                     </div>
                 </div>
             </div>
@@ -354,10 +438,11 @@
     <section id="stack" class="py-24 border-t border-zinc-800/50 bg-[#09090b]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-16 text-center reveal">
-                <h2 class="text-sm font-mono text-emerald-500 mb-3 flex items-center justify-center gap-2"><i data-lucide="box" class="w-4 h-4"></i> ~ ./skills --all</h2>
+                <h2 class="text-sm font-mono text-emerald-500 mb-3 flex items-center justify-center gap-2"><i
+                        data-lucide="box" class="w-4 h-4"></i> ~ ./skills --all</h2>
                 <h3 class="text-3xl md:text-4xl font-bold text-white">Technology Stack Matrix</h3>
             </div>
-            
+
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 <div class="glass-card flex items-center gap-3 p-4 reveal">
                     <i data-lucide="layout" class="w-5 h-5 text-rose-500"></i>
@@ -427,25 +512,34 @@
     </section>
 
     <footer class="py-12 border-t border-zinc-800 bg-zinc-950 relative overflow-hidden">
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-emerald-500/10 blur-[100px] pointer-events-none"></div>
+        <div
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-emerald-500/10 blur-[100px] pointer-events-none">
+        </div>
 
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
             <div class="text-center md:text-left">
-                <div class="text-xl font-bold tracking-tight flex items-center gap-2 justify-center md:justify-start mb-2">
+                <div
+                    class="text-xl font-bold tracking-tight flex items-center gap-2 justify-center md:justify-start mb-2">
                     <i data-lucide="code" class="w-5 h-5 text-emerald-500"></i>
                     <span class="font-mono text-white">Pankaj Saini</span>
                 </div>
                 <p class="text-sm text-zinc-500 font-mono">Status: Compiling scalable solutions in Noida, UP.</p>
             </div>
-            
+
             <div class="flex gap-4">
-                <a href="mailto:mrpankajsaini1001@gmail.com" class="p-3 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 hover:text-white hover:border-emerald-500 transition-all group" aria-label="Email">
+                <a href="mailto:mrpankajsaini1001@gmail.com"
+                    class="p-3 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 hover:text-white hover:border-emerald-500 transition-all group"
+                    aria-label="Email">
                     <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 </a>
-                <a href="https://github.com/Pankaj-Saini-1001" target="_blank" rel="noopener noreferrer" class="p-3 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 hover:text-white hover:border-emerald-500 transition-all group" aria-label="GitHub">
+                <a href="https://github.com/Pankaj-Saini-1001" target="_blank" rel="noopener noreferrer"
+                    class="p-3 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 hover:text-white hover:border-emerald-500 transition-all group"
+                    aria-label="GitHub">
                     <i data-lucide="github" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/pankaj-saini-1505271b7/" target="_blank" rel="noopener noreferrer" class="p-3 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 hover:text-white hover:border-emerald-500 transition-all group" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/pankaj-saini-1505271b7/" target="_blank" rel="noopener noreferrer"
+                    class="p-3 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 hover:text-white hover:border-emerald-500 transition-all group"
+                    aria-label="LinkedIn">
                     <i data-lucide="linkedin" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 </a>
             </div>
@@ -479,4 +573,5 @@
         });
     </script>
 </body>
+
 </html>
