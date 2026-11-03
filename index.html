@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth bg-black">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pankaj Saini | Software Developer</title>
+    <title>Pankaj Saini | Full Stack Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+
     <style>
         :root {
-            --bg-base: #09090b;
-            /* Zinc 950 */
-            --bg-surface: #18181b;
-            /* Zinc 900 */
+            --bg-pure: #030303;
+            --bg-card: rgba(13, 13, 16, 0.75);
             --accent-primary: #10b981;
-            /* Emerald 500 */
-            --accent-secondary: #0ea5e9;
-            /* Sky 500 */
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-base);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-pure);
             color: #f4f4f5;
             overflow-x: hidden;
         }
@@ -33,543 +34,829 @@
             font-family: 'Fira Code', monospace;
         }
 
-        /* Engineering Grid Background */
+        /* Subtle grid pattern */
         .bg-grid {
-            background-size: 40px 40px;
+            background-size: 48px 48px;
             background-image:
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        }
+
+        /* Curtain layer styling */
+        .curtain-hero {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            z-index: 10;
+        }
+
+        .curtain-content {
+            position: relative;
+            z-index: 20;
+            background: linear-gradient(180deg, rgba(3, 3, 3, 0.98) 0%, #030303 70px, #030303 100%);
+            box-shadow: 0 -25px 60px -10px rgba(0, 0, 0, 0.95);
         }
 
         .glass-card {
-            background: rgba(24, 24, 27, 0.6);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1rem;
-            transition: all 0.3s ease;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1.25rem;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.15);
+            transform: translateY(-4px);
             border-color: rgba(16, 185, 129, 0.3);
-        }
-
-        /* Smooth Fade-in Reveal Effects */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.12);
         }
 
         .text-gradient {
-            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            background: linear-gradient(135deg, #ffffff 30%, #10b981 75%, #06b6d4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .btn-glow {
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .btn-glow::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #10b981, #0ea5e9, #10b981);
+            inset: -2px;
+            background: linear-gradient(45deg, #10b981, #06b6d4, #10b981);
+            border-radius: inherit;
             z-index: -1;
-            filter: blur(10px);
+            filter: blur(12px);
             opacity: 0;
             transition: opacity 0.3s ease;
-            border-radius: inherit;
         }
 
         .btn-glow:hover::before {
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
-        /* Terminal typing animation cursor */
         .cursor-blink {
             animation: blink 1s step-end infinite;
         }
 
         @keyframes blink {
-            50% {
-                opacity: 0;
-            }
+            50% { opacity: 0; }
+        }
+
+        .fade-mask-bottom {
+            mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+        }
+
+        /* SVG Social & Nav Icons styling fallback */
+        .icon-svg {
+            display: inline-block;
+            width: 1.15rem;
+            height: 1.15rem;
+            stroke-width: 2;
+            stroke: currentColor;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
     </style>
 </head>
 
-<body class="relative min-h-screen">
-    <div class="fixed inset-0 bg-grid pointer-events-none z-[-1]"></div>
+<body class="bg-[#030303] text-zinc-100 antialiased selection:bg-emerald-500 selection:text-black">
 
-    <div class="fixed top-4 w-full z-50 px-4 md:px-8 flex justify-center pointer-events-none">
-        <nav
-            class="w-full max-w-7xl px-5 py-3 bg-zinc-900/60 backdrop-blur-lg border border-white/10 rounded-2xl shadow-2xl flex justify-between items-center pointer-events-auto transition-all">
-            <div class="text-xl font-bold tracking-tight flex items-center gap-2 group cursor-pointer">
-                <i data-lucide="code" class="w-6 h-6 text-emerald-500 group-hover:text-sky-400 transition-colors"></i>
-                <span class="font-mono hidden sm:block">Pankaj </span>
-            </div>
+    <!-- Global Subtle Grid -->
+    <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
 
-            <div class="hidden md:flex items-center space-x-6 text-sm font-medium font-mono text-zinc-400">
-                <a href="#home" class="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
-                    <i data-lucide="home" class="w-4 h-4"></i> ./homeeeee
-                </a>
-                <a href="#experience" class="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
-                    <i data-lucide="briefcase" class="w-4 h-4"></i> ./experience
-                </a>
-                <a href="#projects" class="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
-                    <i data-lucide="folder-git-2" class="w-4 h-4"></i> ./projects
-                </a>
-                <a href="#stack" class="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
-                    <i data-lucide="layers" class="w-4 h-4"></i> ./stack
-                </a>
-            </div>
-
-            <a href="mailto:mrpankajsaini1001@gmail.com"
-                class="flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/50 hover:bg-emerald-500 hover:text-zinc-950 px-4 py-2 rounded-xl text-sm font-bold transition-all shadow-lg shadow-emerald-500/10">
-                <i data-lucide="send" class="w-4 h-4"></i> <span class="hidden sm:inline">Initialize Contact</span><span
-                    class="sm:hidden">Connect</span>
-            </a>
-        </nav>
+    <!-- Center Top Back-To-Top Button (Appears on Scroll) -->
+    <div id="center-top-btn" class="fixed top-4 left-1/2 -translate-x-1/2 z-[60] opacity-0 pointer-events-none transition-all duration-300">
+        <button onclick="scrollToTop()" class="px-3.5 py-1.5 rounded-full bg-zinc-950/90 border border-emerald-500/50 hover:border-emerald-400 text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.25)] backdrop-blur-md flex items-center gap-1.5 text-xs font-mono font-medium hover:scale-105 transition-transform cursor-pointer">
+            <svg class="icon-svg w-3.5 h-3.5 animate-bounce" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
     </div>
 
-    <section id="home" class="min-h-screen flex flex-col justify-center pt-32 pb-12 px-6">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full">
-
-            <div class="reveal">
-                <div
-                    class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-full text-xs font-mono text-emerald-400 mb-8">
-                    <span class="relative flex h-2 w-2">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    System.out.println("Available for new challenges");
+    <!-- Sticky Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-4 pointer-events-none">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Clicking Pankaj Saini goes directly to the very top -->
+            <button onclick="scrollToTop()" class="pointer-events-auto flex items-center gap-2.5 px-4 py-2 rounded-full bg-zinc-950/85 border border-white/10 backdrop-blur-md shadow-2xl group transition-all text-left">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
+                    <svg class="icon-svg w-4 h-4" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
                 </div>
+                <span class="font-mono font-bold tracking-tight text-white text-sm group-hover:text-emerald-400 transition-colors">&lt;Pankaj Saini /&gt;</span>
+            </button>
 
-                <h1
-                    class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight leading-tight text-white">
-                    Building <span class="text-gradient">Scalable</span> <br>
-                    Software Solutions.
+            <!-- Nav Links without "home" -->
+            <nav class="hidden md:flex items-center gap-8 px-6 py-2.5 rounded-full bg-zinc-950/75 border border-white/10 backdrop-blur-md text-xs font-mono text-zinc-400 pointer-events-auto shadow-2xl">
+                <a href="#experience" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                    <svg class="icon-svg w-3.5 h-3.5 text-emerald-500" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span>./experience</span>
+                </a>
+                <a href="#projects" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                    <svg class="icon-svg w-3.5 h-3.5 text-emerald-500" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span>./architectures</span>
+                </a>
+                <a href="#stack" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+                    <svg class="icon-svg w-3.5 h-3.5 text-emerald-500" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span>./stack</span>
+                </a>
+            </nav>
+
+            <a href="mailto:mrpankajsaini1001@gmail.com" class="pointer-events-auto inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500 text-zinc-950 font-bold text-xs font-mono transition-transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                <span>hire.me()</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION (STICKY STAGE) ==================== -->
+    <section id="hero" class="curtain-hero flex flex-col justify-center items-center px-6 overflow-hidden">
+        <!-- Ambient Backlight -->
+        <div class="absolute w-[500px] h-[500px] bg-emerald-500/10 blur-[140px] rounded-full pointer-events-none -top-10 left-1/2 -translate-x-1/2"></div>
+        <div class="absolute w-[350px] h-[350px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none bottom-10 right-10"></div>
+
+        <div class="max-w-7xl w-full mx-auto grid lg:grid-cols-12 gap-8 items-center h-full pt-16 pb-12 relative z-10">
+
+            <!-- Left: Hero Headline & Summary -->
+            <div class="lg:col-span-4 flex flex-col justify-center text-left space-y-6">
+                <div class="w-16 h-1 bg-emerald-500 rounded-full mb-1"></div>
+                <div class="inline-flex items-center gap-2 text-emerald-400 text-xs font-mono bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full w-max">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>Ready for Software Engineering Roles</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+                    I'm <span class="text-white">Pankaj Saini</span>,<br>
+                    a <span class="text-gradient">Full Stack Developer.</span>
                 </h1>
-
-                <p class="text-zinc-400 max-w-xl text-lg font-light mb-10 leading-relaxed">
-                    Full Stack Developer specializing in bridging high-performance backend architectures with seamless,
-                    interactive frontends using <span
-                        class="text-zinc-200 font-medium border-b border-emerald-500 border-dashed">Angular, NestJS,
-                        Spring Boot, and React Native.</span>
+                
+                <!-- Updated pitch copy with Express and Backend Services -->
+                <p class="text-zinc-400 text-sm leading-relaxed max-w-sm">
+                    Crafting production-grade architectures bridging high-velocity Angular & React interfaces with resilient NestJS & Express backend services.
                 </p>
 
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#projects"
-                        class="btn-glow bg-emerald-500 text-zinc-950 px-8 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-emerald-400 transition-colors">
-                        Execute Portfolio <i data-lucide="play" class="w-4 h-4 fill-current"></i>
-                    </a>
-                    <a href="assets/Pankaj_Saini_Resume.pdf" download="Pankaj_Saini_Resume.pdf"
-                        class="bg-zinc-800/50 border border-zinc-700 text-zinc-300 hover:text-white hover:border-zinc-500 px-8 py-3.5 rounded-xl font-medium flex items-center justify-center gap-2 transition-all backdrop-blur-sm">
-                        <i data-lucide="file-json" class="w-4 h-4"></i> view_resume.pdf
-                    </a>
+                <!-- Execute CTA Button (Lifts curtain up to reveal metrics/numbers) -->
+                <div class="pt-2">
+                    <button onclick="liftCurtain()" class="btn-glow px-6 py-3 rounded-xl bg-emerald-500 text-zinc-950 font-mono font-bold text-xs uppercase tracking-wider flex items-center gap-2.5 hover:bg-emerald-400 transition-all cursor-pointer">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                        <span>Execute Portfolio</span>
+                    </button>
                 </div>
+            </div>
 
-                <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-zinc-800/50">
-                    <div>
-                        <h4 class="text-3xl font-bold text-white mb-1">1.4<span class="text-emerald-500">+</span></h4>
-                        <p class="text-xs font-mono text-zinc-500">Years Exp</p>
-                    </div>
-                    <div>
-                        <h4 class="text-3xl font-bold text-white mb-1">4<span class="text-emerald-500">+</span></h4>
-                        <p class="text-xs font-mono text-zinc-500">Core Stacks</p>
-                    </div>
-                    <div>
-                        <h4 class="text-3xl font-bold text-white mb-1">100<span class="text-emerald-500">%</span></h4>
-                        <p class="text-xs font-mono text-zinc-500">Commitment</p>
+            <!-- Center: Portrait Silhouette Container -->
+            <div class="lg:col-span-4 flex justify-center items-end relative h-full max-h-[580px]">
+                <div class="relative w-full max-w-[380px] h-full flex items-end justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-500/20 via-transparent to-transparent rounded-full filter blur-2xl"></div>
+
+                    <!-- Cutout Container -->
+                    <div class="relative w-full h-[520px] rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-zinc-900/60 to-black p-2 shadow-2xl flex flex-col justify-end items-center group">
+                        <img 
+                            src="assets/Pankaj.jpeg" 
+                            alt="Pankaj Saini" 
+                            class="absolute inset-0 w-full h-full object-cover object-top opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 fade-mask-bottom"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                        
+                        <!-- Floating Location Status -->
+                        <div class="relative z-10 w-full p-4 mb-2 bg-zinc-950/85 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-400 font-mono">Current Base</p>
+                                <p class="text-xs font-bold text-white flex items-center gap-1.5">
+                                    <svg class="icon-svg w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Noida, UP, India</span>
+                                </p>
+                            </div>
+                            <span class="px-2.5 py-1 text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-md">Online</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="reveal glass-card overflow-hidden shadow-2xl relative" style="transition-delay: 0.2s;">
-                <div class="flex items-center px-4 py-3 bg-zinc-900/80 border-b border-zinc-800">
-                    <div class="flex space-x-2">
-                        <div class="w-3 h-3 rounded-full bg-rose-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-amber-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+            <!-- Right: About Snapshot & Interactive Config Code -->
+            <div class="lg:col-span-4 flex flex-col justify-between space-y-6">
+                <!-- About Snapshot Card -->
+                <div class="space-y-2 border-l-2 border-emerald-500/60 pl-4">
+                    <p class="text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-semibold">About Me</p>
+                    <p class="text-zinc-300 text-xs leading-relaxed">
+                        Software Engineer at Mathesis Labs. Core developer responsible for building and orchestrating the complete Dentistry AI Platform ecosystem — directing the web portal, scalable backend APIs, and native mobile applications from inception to production.
+                    </p>
+                </div>
+
+                <!-- Config Preview Console with backend & tools updated -->
+                <div class="glass-card overflow-hidden text-xs font-mono border-zinc-800/80 shadow-2xl">
+                    <div class="flex items-center justify-between px-3.5 py-2.5 bg-zinc-900/90 border-b border-white/5">
+                        <div class="flex items-center gap-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+                        </div>
+                        <span class="text-zinc-500 text-[10px]">pankaj_core.ts</span>
                     </div>
-                    <div class="mx-auto text-xs font-mono text-zinc-500 flex items-center gap-2">
-                        <i data-lucide="code-2" class="w-3 h-3"></i> pankaj_config.ts
+                    <div class="p-3.5 space-y-1 text-[11px] leading-5 text-zinc-300">
+                        <p><span class="text-rose-400">const</span> <span class="text-cyan-300">engineer</span> = {</p>
+                        <p class="pl-4">name: <span class="text-amber-300">'Pankaj Saini'</span>,</p>
+                        <p class="pl-4">frontend: [<span class="text-emerald-400">'Angular'</span>, <span class="text-emerald-400">'React'</span>],</p>
+                        <p class="pl-4">backend: [<span class="text-emerald-400">'NestJS'</span>, <span class="text-emerald-400">'Express'</span>],</p>
+                        <p class="pl-4">mobile: <span class="text-amber-300">'React Native'</span>,</p>
+                        <p class="pl-4">db: <span class="text-amber-300">'MongoDB'</span>,</p>
+                        <p class="pl-4">tools: [<span class="text-cyan-300">'Git'</span>, <span class="text-cyan-300">'Postman'</span>, <span class="text-cyan-300">'VS Code'</span>],</p>
+                        <p class="pl-4">focus: <span class="text-cyan-300">() =&gt;</span> <span class="text-amber-200">'Scalable Systems'</span></p>
+                        <p>};<span class="cursor-blink text-emerald-400 font-bold">_</span></p>
                     </div>
                 </div>
-                <div class="p-6 font-mono text-sm leading-relaxed overflow-x-auto">
-                    <p><span class="text-rose-400">const</span> <span class="text-sky-400">developer</span> = {</p>
-                    <p class="pl-6">name: <span class="text-amber-300">'Pankaj Saini'</span>,</p>
-                    <p class="pl-6">role: <span class="text-amber-300">'Software Developer'</span>,</p>
-                    <p class="pl-6">location: <span class="text-amber-300">'Noida, UP'</span>,</p>
-                    <p class="pl-6">skills: {</p>
-                    <p class="pl-12">frontend: [<span class="text-amber-300">'Angular'</span>, <span
-                            class="text-amber-300">'Material'</span>, <span class="text-amber-300">'Bootstrap'</span>],
-                    </p>
-                    <p class="pl-12">backend: [<span class="text-amber-300">'NestJS'</span>, <span
-                            class="text-amber-300">'Spring Boot'</span>],</p>
-                    <p class="pl-12">mobile: [<span class="text-amber-300">'React Native'</span>],</p>
-                    <p class="pl-12">database: [<span class="text-amber-300">'MongoDB'</span>],</p>
-                    <p class="pl-12">tools: [<span class="text-amber-300">'VS Code'</span>, <span
-                            class="text-amber-300">'GitHub'</span>, <span class="text-amber-300">'IntelliJ'</span>,
-                        <span class="text-amber-300">'Postman'</span>]
-                    </p>
-                    <p class="pl-6">},</p>
-                    <p class="pl-6">getCurrentFocus: <span class="text-rose-400">function</span>() {</p>
-                    <p class="pl-12 text-zinc-400">// Delivering highly scalable & secure apps</p>
-                    <p class="pl-12"><span class="text-rose-400">return</span> <span class="text-amber-300">'Building
-                            robust user experiences'</span>;</p>
-                    <p class="pl-6">}</p>
-                    <p>};<span class="cursor-blink text-emerald-500 font-bold">|</span></p>
+
+                <!-- Connect Links & Visible SVG Icons -->
+                <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
+                    <a href="assets/Pankaj_Saini_Resume.pdf" download="Pankaj_Saini_Resume.pdf" class="w-full text-center px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 hover:border-emerald-500 text-zinc-300 hover:text-white font-mono text-xs transition-colors flex items-center justify-center gap-2">
+                        <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span>resume.pdf</span>
+                    </a>
+                    <div class="flex items-center gap-2.5 w-full justify-center sm:justify-end">
+                        <!-- GitHub Icon -->
+                        <a href="https://github.com/Pankaj-Saini-1001" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-zinc-900/90 border border-zinc-700 hover:border-emerald-400 flex items-center justify-center text-zinc-200 hover:text-emerald-400 transition-colors" title="GitHub">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <!-- LinkedIn Icon -->
+                        <a href="https://www.linkedin.com/in/pankaj-saini-1505271b7/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-zinc-900/90 border border-zinc-700 hover:border-emerald-400 flex items-center justify-center text-zinc-200 hover:text-emerald-400 transition-colors" title="LinkedIn">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <!-- Email Icon -->
+                        <a href="mailto:mrpankajsaini1001@gmail.com" class="w-10 h-10 rounded-xl bg-zinc-900/90 border border-zinc-700 hover:border-emerald-400 flex items-center justify-center text-zinc-200 hover:text-emerald-400 transition-colors" title="Email">
+                            <svg class="icon-svg w-4 h-4" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-24 px-6 relative border-t border-zinc-800/50 bg-zinc-900/20">
-        <div class="max-w-4xl mx-auto">
-            <div class="mb-16 reveal">
-                <h2 class="text-sm font-mono text-emerald-500 mb-3 flex items-center gap-2"><i data-lucide="git-commit"
-                        class="w-4 h-4"></i> ~ ./career --log</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white">Experience Trajectory</h3>
+    <!-- ==================== CURTAIN CONTENT (SLIDES UP OVER HERO) ==================== -->
+    <div id="curtain" class="curtain-content border-t border-white/10">
+
+        <!-- 4-COLUMN ANIMATED METRICS -->
+        <section class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Col 1: Experience -->
+                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden">
+                    <div class="text-4xl lg:text-5xl font-extrabold text-white font-mono mb-2 flex items-center">
+                        <span class="counter" data-target="2">0</span><span class="text-emerald-500">+</span>
+                    </div>
+                    <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider font-semibold">Years Experience</div>
+                    <p class="text-zinc-500 text-xs mt-1">Enterprise & SaaS engineering</p>
+                </div>
+
+                <!-- Col 2: Core Stacks (Updated text) -->
+                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden">
+                    <div class="text-4xl lg:text-5xl font-extrabold text-white font-mono mb-2 flex items-center">
+                        <span class="counter" data-target="4">0</span><span class="text-cyan-400">+</span>
+                    </div>
+                    <div class="text-xs font-mono text-cyan-400 uppercase tracking-wider font-semibold">Core Stacks</div>
+                    <p class="text-zinc-400 text-xs mt-1">Angular, NestJS, React, and Express</p>
+                </div>
+
+                <!-- Col 3: Projects Worked (Updated metric) -->
+                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden">
+                    <div class="text-4xl lg:text-5xl font-extrabold text-white font-mono mb-2 flex items-center">
+                        <span class="counter" data-target="5">0</span><span class="text-blue-500">+</span>
+                    </div>
+                    <div class="text-xs font-mono text-blue-400 uppercase tracking-wider font-semibold">Projects Built & Shipped</div>
+                    <p class="text-zinc-500 text-xs mt-1">Production SaaS, FinTech & Enterprise</p>
+                </div>
+
+                <!-- Col 4: Commitment & Code Quality -->
+                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden">
+                    <div class="text-4xl lg:text-5xl font-extrabold text-white font-mono mb-2 flex items-center">
+                        <span class="counter" data-target="100">0</span><span class="text-emerald-400">%</span>
+                    </div>
+                    <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider font-semibold">Commitment & Quality</div>
+                    <p class="text-zinc-500 text-xs mt-1">Robust, clean architectural standards</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== EXPERIENCE & TRAJECTORY ==================== -->
+        <section id="experience" class="py-20 px-6 max-w-5xl mx-auto border-t border-zinc-900">
+            <div class="mb-14">
+                <div class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full mb-3">
+                    <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><line x1="3" x2="9" y1="12" y2="12"/><line x1="15" x2="21" y1="12" y2="12"/></svg>
+                    <span>~/career-trajectory</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Experience Trajectory</h2>
             </div>
 
-            <div class="space-y-12">
+            <div class="space-y-10 relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-4 md:left-[180px] top-4 bottom-4 w-px bg-zinc-800"></div>
 
-                <div class="relative md:grid md:grid-cols-5 items-start gap-8 reveal">
-                    <div class="hidden md:block col-span-1 text-right pt-2">
-                        <span class="font-mono text-sm text-zinc-500">Nov 2024 - Present</span>
+                <!-- 1. Full-time: Feb 2025 - Present -->
+                <div class="relative flex flex-col md:flex-row gap-6 md:gap-12 pl-12 md:pl-0">
+                    <div class="md:w-[180px] md:text-right shrink-0 pt-1">
+                        <span class="font-mono text-xs text-emerald-400 font-bold block">Feb 2025 - Present</span>
+                        <span class="font-mono text-[10px] text-zinc-500">Software Developer</span>
                     </div>
-
-                    <div class="md:col-span-4 relative border-l border-zinc-700 pl-6 md:pl-8">
-                        <div
-                            class="absolute -left-[9px] top-2.5 w-4 h-4 rounded-full bg-zinc-900 border-2 border-emerald-500 ring-4 ring-zinc-950">
-                        </div>
-
-                        <div class="glass-card p-6 md:p-8">
-                            <div class="mb-5">
-                                <h4 class="text-xl font-bold text-white">Software Developer</h4>
-                                <p class="text-emerald-400 font-mono text-sm mt-1">@ Mathesis Labs Technology Pvt Ltd
-                                </p>
-                                <span class="md:hidden font-mono text-xs text-zinc-500 block mt-2">Nov 2024 -
-                                    Present</span>
+                    <div class="absolute left-3 md:left-[176px] top-2 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-4 ring-black"></div>
+                    <div class="glass-card p-6 md:p-8 w-full border-zinc-800">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Software Developer</h3>
+                                <p class="text-emerald-400 font-mono text-xs">Mathesis Labs Technology Pvt Ltd</p>
                             </div>
-
-                            <ul class="space-y-3 text-zinc-400 text-sm leading-relaxed">
-                                <li class="flex gap-3 items-start">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
-                                    <span>Developed modular UI components using <strong>Angular Material</strong> and
-                                        <strong>Bootstrap</strong>, and fixed functionality bugs to enhance overall app
-                                        stability.</span>
-                                </li>
-                                <li class="flex gap-3 items-start">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
-                                    <span>Built robust backend APIs with <strong>NestJS</strong> for data processing and
-                                        integrated critical REST APIs for patient records, billing, and dashboard
-                                        modules.</span>
-                                </li>
-                                <li class="flex gap-3 items-start">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
-                                    <span>Engineered a mobile app from scratch using <strong>React Native</strong>,
-                                        designing the UI/UX, integrating core APIs, and optimizing navigation flows and
-                                        state handling.</span>
-                                </li>
-                                <li class="flex gap-3 items-start">
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
-                                    <span>Maintained version control using <strong>Git</strong> to ensure smooth code
-                                        collaboration and conflict resolution in a multi-developer environment.</span>
-                                </li>
-                            </ul>
+                            <span class="px-2.5 py-1 text-[11px] font-mono bg-zinc-800 text-zinc-300 rounded border border-zinc-700">Full-Time</span>
                         </div>
+                        <ul class="space-y-2.5 text-zinc-400 text-xs sm:text-sm leading-relaxed mt-4">
+                            <li class="flex items-start gap-2.5">
+                                <svg class="icon-svg w-4 h-4 text-emerald-400 shrink-0 mt-0.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                <span>Core engineer steering the full <strong>Dentistry AI Platform</strong> ecosystem, driving web modules, high-throughput NestJS APIs, and the React Native mobile app.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <svg class="icon-svg w-4 h-4 text-emerald-400 shrink-0 mt-0.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                <span>Architecting scalable micro-APIs with <strong>NestJS</strong> and <strong>Express</strong>, executing complex aggregations on remote <strong>MongoDB Atlas</strong> databases.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <svg class="icon-svg w-4 h-4 text-emerald-400 shrink-0 mt-0.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                <span>Designing cross-platform client flows in <strong>React Native</strong> with persistent state handling, real-time synchronization, and smooth navigation.</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="relative md:grid md:grid-cols-5 items-start gap-8 reveal">
-                    <div class="hidden md:block col-span-1 text-right pt-2">
-                        <span class="font-mono text-sm text-zinc-500">2020 - 2024</span>
+                <!-- 2. Trainee: Nov 2024 - 31 Jan 2025 -->
+                <div class="relative flex flex-col md:flex-row gap-6 md:gap-12 pl-12 md:pl-0">
+                    <div class="md:w-[180px] md:text-right shrink-0 pt-1">
+                        <span class="font-mono text-xs text-zinc-400 block">Nov 2024 - Jan 31, 2025</span>
+                        <span class="font-mono text-[10px] text-zinc-500">Developer Trainee</span>
                     </div>
-
-                    <div class="md:col-span-4 relative border-l border-zinc-700 pl-6 md:pl-8">
-                        <div
-                            class="absolute -left-[9px] top-2.5 w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-600 ring-4 ring-zinc-950">
+                    <div class="absolute left-3 md:left-[176px] top-2 w-2.5 h-2.5 rounded-full bg-zinc-600 ring-4 ring-black"></div>
+                    <div class="glass-card p-6 md:p-8 w-full border-zinc-800">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Software Developer Trainee</h3>
+                                <p class="text-zinc-400 font-mono text-xs">Mathesis Labs Technology Pvt Ltd</p>
+                            </div>
+                            <span class="px-2.5 py-1 text-[11px] font-mono bg-zinc-900 text-zinc-400 rounded border border-zinc-800">Training Phase</span>
                         </div>
+                        <ul class="space-y-2.5 text-zinc-400 text-xs sm:text-sm leading-relaxed mt-4">
+                            <li class="flex items-start gap-2.5">
+                                <svg class="icon-svg w-4 h-4 text-zinc-500 shrink-0 mt-0.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                                <span>Engineered responsive web modules using <strong>Angular Material</strong>, <strong>Bootstrap</strong>, and TypeScript, resolving critical functionality and UI bugs.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <svg class="icon-svg w-4 h-4 text-zinc-500 shrink-0 mt-0.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                                <span>Explored and developed proof-of-concept backend services utilizing <strong>Java Spring Boot</strong> alongside NestJS microservice pipelines.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                        <div
-                            class="p-6 border border-zinc-800/50 rounded-xl bg-zinc-900/30 flex flex-col sm:flex-row items-center gap-6">
-                            <div class="p-4 bg-zinc-800/50 rounded-lg text-zinc-400">
-                                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                <!-- 3. Education: B.Tech -->
+                <div class="relative flex flex-col md:flex-row gap-6 md:gap-12 pl-12 md:pl-0">
+                    <div class="md:w-[180px] md:text-right shrink-0 pt-1">
+                        <span class="font-mono text-xs text-zinc-400 block">2020 - 2024</span>
+                        <span class="font-mono text-[10px] text-zinc-500">Degree</span>
+                    </div>
+                    <div class="absolute left-3 md:left-[176px] top-2 w-2.5 h-2.5 rounded-full bg-zinc-700 ring-4 ring-black"></div>
+                    <div class="glass-card p-6 w-full border-zinc-800 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-700 flex items-center justify-center text-zinc-400 shrink-0">
+                            <svg class="icon-svg w-6 h-6" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-.838L12.83 3.18a2 2 0 0 0-1.66 0L2.6 10.084a1 1 0 0 0 0 1.832l8.57 6.908a2 2 0 0 0 1.66 0l6.71-5.409v4.417a1 1 0 0 0 2 0v-6.91Z"/><path d="M6 13.5v4.75a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V13.5"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-white">B.Tech in Computer Science and Engineering</h4>
+                            <p class="text-xs text-zinc-400">Panipat Institute of Engineering and Technology (PIET)</p>
+                            <span class="text-[10px] font-mono text-emerald-400 mt-1 inline-block">Foundation: Data Structures, Database Architecture, Object-Oriented Engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SYSTEM ARCHITECTURES & PROJECTS ==================== -->
+        <section id="projects" class="py-20 px-6 max-w-7xl mx-auto border-t border-zinc-900">
+            <div class="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full mb-3">
+                        <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/></svg>
+                        <span>~/production-architectures</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Engineered Solutions</h2>
+                </div>
+                <p class="text-zinc-500 text-xs font-mono">Live commercial platforms, FinTech SaaS, and business software</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+
+                <!-- 1. Dentistry AI Platform -->
+                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-md text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Live Company SaaS
+                            </span>
+                            <span class="text-[10px] font-mono text-zinc-400">Web • Backend • Mobile</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">Dentistry AI Platform</h3>
+                        <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Enterprise-grade clinical management software deployed for real-world operations. I lead and maintain the complete ecosystem: the web portal, robust backend microservices, and native mobile applications. Powers patient records, automated treatment billing, and staff schedules.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/80 mb-4">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-emerald-300">Angular</span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-cyan-300">NestJS</span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-blue-300">React Native</span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-zinc-300">Remote MongoDB</span>
+                        </div>
+                        <div class="text-[11px] font-mono text-zinc-500">Scope: Comprehensive system management across frontend, backend, and mobile.</div>
+                    </div>
+                </div>
+
+                <!-- 2. EMI Setu -->
+                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-md text-[11px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold flex items-center gap-1.5">
+                                <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                <span>FinTech Platform</span>
+                            </span>
+                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">Web Live / Mobile Soon</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">EMI Setu</h3>
+                        <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Tailor-made for Tier-2 financial lenders and institutions to track daily EMI collections. Fully designed and developed by me. Features dynamic customer onboarding, fully customizable interest calculations, payment entries, ledger reconciliations, multi-tenant administrative audits, and dashboards.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/80 mb-4">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-cyan-300">Angular (Admin Live)</span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-emerald-300">NestJS Core</span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-blue-300">React Native (Live Soon)</span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-zinc-300">Cloud MongoDB</span>
+                        </div>
+                        <div class="text-[11px] font-mono text-zinc-500">Highlights: Multi-tenant subscriptions, audit controls, automated schedules.</div>
+                    </div>
+                </div>
+
+                <!-- 3. DevTrack -->
+                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-md text-[11px] font-mono bg-purple-500/10 text-purple-400 border border-purple-500/20 font-semibold flex items-center gap-1.5">
+                                <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                                <span>Productivity Platform</span>
+                            </span>
+                            <span class="text-[10px] font-mono text-zinc-400">Active Internal System</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors mb-2">DevTrack</h3>
+                        <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Team productivity and task operations portal designed and developed by me. In active daily use by myself and colleagues to manage sprint task logs, daily check-in attendances, productivity summaries, and dynamic analytic graph dashboards backed by a hosted MongoDB cloud.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/80 mb-4">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-purple-300">Angular</span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-green-300">Node.js / Express</span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-zinc-300">Remote Cloud DB</span>
+                        </div>
+                        <div class="text-[11px] font-mono text-zinc-500">Scope: Full sprint task lifecycles, attendance logging, and graph charts.</div>
+                    </div>
+                </div>
+
+                <!-- 4. AEW Web Application (Updated Business Domain) -->
+                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-md text-[11px] font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold flex items-center gap-1.5">
+                                <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                                <span>Commercial ERP</span>
+                            </span>
+                            <span class="text-[10px] font-mono text-zinc-400">Business Operations</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors mb-2">AEW Web Application</h3>
+                        <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+                            Tailored ERP software engineered to digitize my family's electrical and home appliances enterprise. Handles real-time stock and inventory levels, monitors sales records, tracks profit & loss, calculates profit margins, and manages equipment repair service orders with real-time remote cloud MongoDB synchronization.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/80 mb-4">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-amber-300">Angular</span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-emerald-300">NestJS / Node</span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 border border-zinc-700/60 text-zinc-300">Live MongoDB</span>
+                        </div>
+                        <div class="text-[11px] font-mono text-zinc-500">Domain: Appliances stock, repair tracking, profit/loss, and margin calculations.</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== TECH STACK MATRIX (SINGLE ROW LAYOUT) ==================== -->
+        <section id="stack" class="py-20 px-6 max-w-7xl mx-auto border-t border-zinc-900">
+            <div class="mb-14 text-center">
+                <div class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full mb-3">
+                    <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    <span>~/skills --matrix</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Technical Mastery</h2>
+                <p class="text-zinc-500 text-xs font-mono mt-2">Core expertise across clients, backends, databases, and tooling</p>
+            </div>
+
+            <!-- Single Row Grid with 4 Clean Columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- 1. Frontend & Mobile (Combined) -->
+                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-9 h-9 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400">
+                                <svg class="icon-svg w-4 h-4" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-white">B.Tech in Computer Science</h4>
-                                <p class="text-zinc-400 text-sm">Panipat Institute of Engineering and Technology</p>
-                                <span class="md:hidden font-mono text-xs text-zinc-500 block mt-1">2020 - 2024</span>
+                                <h3 class="text-sm font-bold text-white">Frontend & Mobile</h3>
+                                <p class="text-[10px] text-zinc-500 font-mono">Client Interfaces</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">Angular</span>
+                                    <span class="font-mono text-[10px] text-emerald-400">Core Expertise</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">RxJS, reactive forms, modular architecture, Angular Material.</p>
+                            </div>
+
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">React.js</span>
+                                    <span class="font-mono text-[10px] text-cyan-400">Proficient</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">Functional components, state hooks, reactive UI flows.</p>
+                            </div>
+
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">React Native</span>
+                                    <span class="font-mono text-[10px] text-blue-400">Production</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">Cross-platform mobile applications, state caching, offline-first sync.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Backend Services -->
+                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                                <svg class="icon-svg w-4 h-4" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-white">Backend Engineering</h3>
+                                <p class="text-[10px] text-zinc-500 font-mono">APIs & Microservices</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">NestJS</span>
+                                    <span class="font-mono text-[10px] text-emerald-400">Core Expertise</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">Modular architecture, DI, guards, pipes, and interceptors.</p>
+                            </div>
+
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">Node.js / Express</span>
+                                    <span class="font-mono text-[10px] text-emerald-400">Core Expertise</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">RESTful design, custom middleware pipelines, high throughput.</p>
+                            </div>
+
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">Java Spring Boot</span>
+                                    <span class="font-mono text-[10px] text-zinc-400">POCs Experience</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">Hands-on microservice prototypes and REST endpoint services.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Database & Languages -->
+                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                                <svg class="icon-svg w-4 h-4" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-white">DB & Language</h3>
+                                <p class="text-[10px] text-zinc-500 font-mono">Data Layer</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">MongoDB</span>
+                                    <span class="font-mono text-[10px] text-emerald-400">Expertise</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">Aggregation pipelines, live Atlas clusters, schema indexing.</p>
+                            </div>
+
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">TypeScript</span>
+                                    <span class="font-mono text-[10px] text-cyan-400">Expertise</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">Strict type safety, generic utilities, enterprise scale.</p>
+                            </div>
+
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">JavaScript (ES6+)</span>
+                                    <span class="font-mono text-[10px] text-zinc-300">Proficient</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">Asynchronous runtimes, event loops, and DOM performance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Tools & Environments (Separated) -->
+                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                                <svg class="icon-svg w-4 h-4" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-white">Dev Tools & IDEs</h3>
+                                <p class="text-[10px] text-zinc-500 font-mono">Tooling Ecosystem</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">Git & GitHub</span>
+                                    <span class="font-mono text-[10px] text-zinc-300">Daily Driver</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">Branching workflows, version tracking, collaboration.</p>
+                            </div>
+
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">Postman</span>
+                                    <span class="font-mono text-[10px] text-zinc-300">API Testing</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">Endpoint testing, mock servers, auth validations.</p>
+                            </div>
+
+                            <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
+                                <div class="flex justify-between items-center text-xs mb-1">
+                                    <span class="font-bold text-white">IDEs & Editors</span>
+                                    <span class="font-mono text-[10px] text-zinc-300">Environments</span>
+                                </div>
+                                <p class="text-[11px] text-zinc-400">VS Code, IntelliJ IDEA, Antigravity, terminal.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects" class="py-24 px-6 max-w-7xl mx-auto border-t border-zinc-800/50">
-        <div class="mb-16 reveal">
-            <h2 class="text-sm font-mono text-emerald-500 mb-3 flex items-center gap-2"><i data-lucide="terminal"
-                    class="w-4 h-4"></i> ~ ./projects --featured</h2>
-            <h3 class="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
-                System Architectures <i data-lucide="cpu" class="w-8 h-8 text-zinc-600"></i>
-            </h3>
-        </div>
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="relative bg-black border-t border-zinc-900 py-16 px-6 overflow-hidden">
+            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-32 bg-emerald-500/10 blur-[100px] pointer-events-none"></div>
 
-        <div class="grid lg:grid-cols-3 gap-6">
-            <div class="glass-card p-1 group reveal flex flex-col h-full">
-                <div class="bg-zinc-900 p-6 rounded-[0.85rem] h-full flex flex-col relative overflow-hidden">
-                    <div
-                        class="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-bl-full blur-2xl transition-all group-hover:bg-sky-500/20">
-                    </div>
-
-                    <div class="flex justify-between items-start mb-6 z-10">
-                        <div class="p-3 bg-zinc-800 rounded-lg text-sky-400 border border-zinc-700">
-                            <i data-lucide="stethoscope" class="w-6 h-6"></i>
-                        </div>
-                        <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i
-                                data-lucide="external-link" class="w-5 h-5"></i></a>
-                    </div>
-
-                    <h3 class="text-xl font-bold mb-3 text-white z-10">Dentistry AI Platform</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow z-10">
-                        Enterprise-grade clinical platform managing patient logic, dynamic billing, and staff schedules.
-                        Unified architecture spanning web admins and mobile end-users.
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+                <div class="text-center md:text-left space-y-2">
+                    <button onclick="scrollToTop()" class="text-2xl font-bold tracking-tight text-white flex items-center justify-center md:justify-start gap-2 hover:text-emerald-400 transition-colors">
+                        <svg class="icon-svg w-6 h-6 text-emerald-400" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        <span>Pankaj Saini</span>
+                    </button>
+                    <p class="text-xs font-mono text-zinc-500 max-w-sm">
+                        Full Stack Software Developer • Building high-availability platforms in Noida, UP, India.
                     </p>
+                </div>
 
-                    <div class="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/80 z-10">
-                        <span
-                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-sky-300">Angular</span>
-                        <span
-                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-rose-300">NestJS</span>
-                        <span
-                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-emerald-300">React
-                            Native</span>
-                    </div>
+                <!-- Footer Socials with SVG Icons -->
+                <div class="flex items-center gap-3">
+                    <a href="mailto:mrpankajsaini1001@gmail.com" class="w-11 h-11 rounded-xl bg-zinc-900/90 border border-zinc-700 hover:border-emerald-400 flex items-center justify-center text-zinc-200 hover:text-emerald-400 transition-all hover:scale-105" title="Direct Email">
+                        <svg class="icon-svg w-5 h-5" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </a>
+                    <a href="https://github.com/Pankaj-Saini-1001" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-zinc-900/90 border border-zinc-700 hover:border-emerald-400 flex items-center justify-center text-zinc-200 hover:text-emerald-400 transition-all hover:scale-105" title="GitHub">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/pankaj-saini-1505271b7/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-xl bg-zinc-900/90 border border-zinc-700 hover:border-emerald-400 flex items-center justify-center text-zinc-200 hover:text-emerald-400 transition-all hover:scale-105" title="LinkedIn">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
 
-            <div class="glass-card p-1 group reveal flex flex-col h-full" style="transition-delay: 0.1s;">
-                <div class="bg-zinc-900 p-6 rounded-[0.85rem] h-full flex flex-col relative overflow-hidden">
-                    <div
-                        class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-bl-full blur-2xl transition-all group-hover:bg-emerald-500/20">
-                    </div>
-
-                    <div class="flex justify-between items-start mb-6 z-10">
-                        <div class="p-3 bg-zinc-800 rounded-lg text-emerald-400 border border-zinc-700">
-                            <i data-lucide="wallet" class="w-6 h-6"></i>
-                        </div>
-                        <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="github"
-                                class="w-5 h-5"></i></a>
-                    </div>
-
-                    <h3 class="text-xl font-bold mb-3 text-white z-10">Lend Ledger App</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow z-10">
-                        Fintech mobile application optimizing peer-to-peer lending records. Implemented complex state
-                        management, secure REST integration, and fluid navigation flows.
-                    </p>
-
-                    <div class="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/80 z-10">
-                        <span
-                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-green-300">Spring
-                            Boot</span>
-                        <span
-                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-cyan-300">React
-                            Native</span>
-                        <span
-                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-emerald-300">MongoDB</span>
-                    </div>
+            <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-zinc-900/60 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-600 gap-4">
+                <div>© 2026 Pankaj Saini. All systems operational.</div>
+                <div class="flex gap-4">
+                    <span>Angular</span> • <span>NestJS</span> • <span>React</span> • <span>React Native</span> • <span>MongoDB</span>
                 </div>
             </div>
+        </footer>
 
-            <div class="glass-card p-1 group reveal flex flex-col h-full" style="transition-delay: 0.2s;">
-                <div class="bg-zinc-900 p-6 rounded-[0.85rem] h-full flex flex-col relative overflow-hidden">
-                    <div
-                        class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-bl-full blur-2xl transition-all group-hover:bg-amber-500/20">
-                    </div>
+    </div>
 
-                    <div class="flex justify-between items-start mb-6 z-10">
-                        <div class="p-3 bg-zinc-800 rounded-lg text-amber-400 border border-zinc-700">
-                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
-                        </div>
-                        <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="github"
-                                class="w-5 h-5"></i></a>
-                    </div>
-
-                    <h3 class="text-xl font-bold mb-3 text-white z-10">AEW Web Application</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow z-10">
-                        Secure full-stack portal leveraging JWT authentication and role-based access. Designed
-                        interactive data charting modules backed by high-speed MongoDB queries.
-                    </p>
-
-                    <div class="flex flex-wrap gap-2 pt-4 border-t border-zinc-800/80 z-10">
-                        <span
-                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-sky-300">Angular</span>
-                        <span
-                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-green-300">Spring
-                            Boot</span>
-                        <span
-                            class="text-xs font-mono bg-zinc-950 border border-zinc-800 px-2 py-1 rounded text-zinc-300">MongoDB</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="stack" class="py-24 border-t border-zinc-800/50 bg-[#09090b]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-16 text-center reveal">
-                <h2 class="text-sm font-mono text-emerald-500 mb-3 flex items-center justify-center gap-2"><i
-                        data-lucide="box" class="w-4 h-4"></i> ~ ./skills --all</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white">Technology Stack Matrix</h3>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                <div class="glass-card flex items-center gap-3 p-4 reveal">
-                    <i data-lucide="layout" class="w-5 h-5 text-rose-500"></i>
-                    <div>
-                        <div class="text-sm font-bold text-white">Angular</div>
-                        <div class="text-[10px] font-mono text-zinc-500 uppercase">Frontend</div>
-                    </div>
-                </div>
-                <div class="glass-card flex items-center gap-3 p-4 reveal" style="transition-delay: 0.1s;">
-                    <i data-lucide="file-code-2" class="w-5 h-5 text-blue-500"></i>
-                    <div>
-                        <div class="text-sm font-bold text-white">TypeScript</div>
-                        <div class="text-[10px] font-mono text-zinc-500 uppercase">Language</div>
-                    </div>
-                </div>
-                <div class="glass-card flex items-center gap-3 p-4 reveal" style="transition-delay: 0.2s;">
-                    <i data-lucide="server" class="w-5 h-5 text-green-500"></i>
-                    <div>
-                        <div class="text-sm font-bold text-white">Spring Boot</div>
-                        <div class="text-[10px] font-mono text-zinc-500 uppercase">Backend</div>
-                    </div>
-                </div>
-                <div class="glass-card flex items-center gap-3 p-4 reveal" style="transition-delay: 0.3s;">
-                    <i data-lucide="boxes" class="w-5 h-5 text-rose-400"></i>
-                    <div>
-                        <div class="text-sm font-bold text-white">NestJS</div>
-                        <div class="text-[10px] font-mono text-zinc-500 uppercase">Backend</div>
-                    </div>
-                </div>
-                <div class="glass-card flex items-center gap-3 p-4 reveal" style="transition-delay: 0.4s;">
-                    <i data-lucide="smartphone" class="w-5 h-5 text-cyan-400"></i>
-                    <div>
-                        <div class="text-sm font-bold text-white">React Native</div>
-                        <div class="text-[10px] font-mono text-zinc-500 uppercase">Mobile UI</div>
-                    </div>
-                </div>
-                <div class="glass-card flex items-center gap-3 p-4 reveal" style="transition-delay: 0.5s;">
-                    <i data-lucide="database" class="w-5 h-5 text-green-400"></i>
-                    <div>
-                        <div class="text-sm font-bold text-white">MongoDB</div>
-                        <div class="text-[10px] font-mono text-zinc-500 uppercase">Database</div>
-                    </div>
-                </div>
-                <div class="glass-card flex items-center gap-3 p-4 reveal" style="transition-delay: 0.6s;">
-                    <i data-lucide="git-branch" class="w-5 h-5 text-orange-500"></i>
-                    <div>
-                        <div class="text-sm font-bold text-white">Git</div>
-                        <div class="text-[10px] font-mono text-zinc-500 uppercase">Version Ctrl</div>
-                    </div>
-                </div>
-                <div class="glass-card flex items-center gap-3 p-4 reveal" style="transition-delay: 0.7s;">
-                    <i data-lucide="terminal-square" class="w-5 h-5 text-purple-500"></i>
-                    <div>
-                        <div class="text-sm font-bold text-white">VS Code/IDE</div>
-                        <div class="text-[10px] font-mono text-zinc-500 uppercase">Environment</div>
-                    </div>
-                </div>
-                <div class="glass-card flex items-center gap-3 p-4 reveal" style="transition-delay: 0.8s;">
-                    <i data-lucide="test-tubes" class="w-5 h-5 text-orange-400"></i>
-                    <div>
-                        <div class="text-sm font-bold text-white">Postman</div>
-                        <div class="text-[10px] font-mono text-zinc-500 uppercase">API Testing</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-12 border-t border-zinc-800 bg-zinc-950 relative overflow-hidden">
-        <div
-            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-emerald-500/10 blur-[100px] pointer-events-none">
-        </div>
-
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
-            <div class="text-center md:text-left">
-                <div
-                    class="text-xl font-bold tracking-tight flex items-center gap-2 justify-center md:justify-start mb-2">
-                    <i data-lucide="code" class="w-5 h-5 text-emerald-500"></i>
-                    <span class="font-mono text-white">Pankaj Saini</span>
-                </div>
-                <p class="text-sm text-zinc-500 font-mono">Status: Compiling scalable solutions in Noida, UP.</p>
-            </div>
-
-            <div class="flex gap-4">
-                <a href="mailto:mrpankajsaini1001@gmail.com"
-                    class="p-3 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 hover:text-white hover:border-emerald-500 transition-all group"
-                    aria-label="Email">
-                    <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                </a>
-                <a href="https://github.com/Pankaj-Saini-1001" target="_blank" rel="noopener noreferrer"
-                    class="p-3 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 hover:text-white hover:border-emerald-500 transition-all group"
-                    aria-label="GitHub">
-                    <i data-lucide="github" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/pankaj-saini-1505271b7/" target="_blank" rel="noopener noreferrer"
-                    class="p-3 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 hover:text-white hover:border-emerald-500 transition-all group"
-                    aria-label="LinkedIn">
-                    <i data-lucide="linkedin" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                </a>
-            </div>
-        </div>
-        <div class="mt-8 text-center text-xs font-mono text-zinc-600">
-            /* &copy; 2026 Pankaj Saini. All rights reserved. */
-        </div>
-    </footer>
-
+    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Icons
-            lucide.createIcons();
+        // Scroll to the very top smoothly
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            // Unique variables for IntersectionObserver
-            const scrollRevealOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
+        // Execute Portfolio / Scroll to Curtain Content
+        function liftCurtain() {
+            const curtain = document.getElementById('curtain');
+            if (curtain) {
+                curtain.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if lucide exists and create icons
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+
+            // Top Center Floating Arrow Visibility on Scroll
+            const topBtn = document.getElementById('center-top-btn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    topBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    topBtn.classList.add('opacity-100', 'pointer-events-auto');
+                } else {
+                    topBtn.classList.remove('opacity-100', 'pointer-events-auto');
+                    topBtn.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            // Animated Number Counters (Count from 0 up to target)
+            const counters = document.querySelectorAll('.counter');
+            let countersStarted = false;
+
+            const startCounters = () => {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 1500;
+                    const frameRate = 1000 / 60;
+                    const totalFrames = Math.round(duration / frameRate);
+                    let currentFrame = 0;
+
+                    const updateCount = () => {
+                        currentFrame++;
+                        const progress = currentFrame / totalFrames;
+                        // Ease-out exponential
+                        const currentVal = Math.round(target * (1 - Math.pow(2, -10 * progress)));
+                        
+                        counter.innerText = currentVal > target ? target : currentVal;
+
+                        if (currentFrame < totalFrames) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+
+                    updateCount();
+                });
             };
 
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, scrollRevealOptions);
+            // Observer for starting counter once curtain appears
+            const counterSection = document.querySelector('#curtain');
+            if (counterSection) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !countersStarted) {
+                            countersStarted = true;
+                            startCounters();
+                        }
+                    });
+                }, { threshold: 0.1 });
 
-            // Observe all elements with 'reveal' class
-            document.querySelectorAll('.reveal').forEach(el => scrollObserver.observe(el));
+                observer.observe(counterSection);
+            }
         });
     </script>
 </body>
