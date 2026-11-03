@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pankaj Saini | Full Stack Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +16,7 @@
     <style>
         :root {
             --bg-pure: #030303;
-            --bg-card: rgba(13, 13, 16, 0.75);
+            --bg-card: rgba(14, 14, 18, 0.72);
             --accent-primary: #10b981;
             --accent-cyan: #06b6d4;
             --accent-blue: #3b82f6;
@@ -34,15 +33,17 @@
             font-family: 'Fira Code', monospace;
         }
 
-        /* Subtle grid pattern */
+        /* Engineering Grid with Subtle Radial Mask */
         .bg-grid {
-            background-size: 48px 48px;
+            background-size: 44px 44px;
             background-image:
                 linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
         }
 
-        /* Curtain layer styling */
+        /* Curtain Layer Structure */
         .curtain-hero {
             position: sticky;
             top: 0;
@@ -53,34 +54,37 @@
         .curtain-content {
             position: relative;
             z-index: 20;
-            background: linear-gradient(180deg, rgba(3, 3, 3, 0.98) 0%, #030303 70px, #030303 100%);
-            box-shadow: 0 -25px 60px -10px rgba(0, 0, 0, 0.95);
+            background: linear-gradient(180deg, rgba(3, 3, 3, 0.98) 0%, #030303 80px, #030303 100%);
+            box-shadow: 0 -30px 70px -10px rgba(0, 0, 0, 0.98);
         }
 
+        /* High-End Glassmorphism */
         .glass-card {
             background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 1.25rem;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .glass-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(16, 185, 129, 0.3);
-            box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.12);
+            transform: translateY(-5px);
+            border-color: rgba(16, 185, 129, 0.35);
+            box-shadow: 0 24px 48px -12px rgba(16, 185, 129, 0.12);
         }
 
+        /* Modern Gradient Typography */
         .text-gradient {
-            background: linear-gradient(135deg, #ffffff 30%, #10b981 75%, #06b6d4 100%);
+            background: linear-gradient(135deg, #ffffff 25%, #10b981 75%, #06b6d4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        /* Button Ambient Hover Glow */
         .btn-glow {
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.35s ease;
         }
 
         .btn-glow::before {
@@ -90,13 +94,30 @@
             background: linear-gradient(45deg, #10b981, #06b6d4, #10b981);
             border-radius: inherit;
             z-index: -1;
-            filter: blur(12px);
+            filter: blur(14px);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.35s ease;
         }
 
         .btn-glow:hover::before {
-            opacity: 0.8;
+            opacity: 0.85;
+        }
+
+        /* Subtle Portrait Background Mesh */
+        .portrait-mesh {
+            background: radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.18) 0%, rgba(6, 182, 212, 0.08) 45%, transparent 70%);
+        }
+
+        /* Executive Fade-in Transitions */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .cursor-blink {
@@ -107,12 +128,7 @@
             50% { opacity: 0; }
         }
 
-        .fade-mask-bottom {
-            mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-        }
-
-        /* SVG Social & Nav Icons styling fallback */
+        /* SVG Sizing Utility */
         .icon-svg {
             display: inline-block;
             width: 1.15rem;
@@ -128,29 +144,28 @@
 
 <body class="bg-[#030303] text-zinc-100 antialiased selection:bg-emerald-500 selection:text-black">
 
-    <!-- Global Subtle Grid -->
+    <!-- Global Grid Texture -->
     <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
 
-    <!-- Center Top Back-To-Top Button (Appears on Scroll) -->
+    <!-- Center Top Back-To-Top Button -->
     <div id="center-top-btn" class="fixed top-4 left-1/2 -translate-x-1/2 z-[60] opacity-0 pointer-events-none transition-all duration-300">
-        <button onclick="scrollToTop()" class="px-3.5 py-1.5 rounded-full bg-zinc-950/90 border border-emerald-500/50 hover:border-emerald-400 text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.25)] backdrop-blur-md flex items-center gap-1.5 text-xs font-mono font-medium hover:scale-105 transition-transform cursor-pointer">
-            <svg class="icon-svg w-3.5 h-3.5 animate-bounce" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg>
+        <button onclick="scrollToTop()" class="px-4 py-1.5 rounded-full bg-zinc-950/90 border border-emerald-500/40 hover:border-emerald-400 text-emerald-400 shadow-[0_0_25px_rgba(16,185,129,0.25)] backdrop-blur-md flex items-center gap-1.5 text-xs font-mono font-medium hover:scale-105 transition-all cursor-pointer">
+            <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg>
         </button>
     </div>
 
     <!-- Sticky Navigation Bar -->
     <header class="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-4 pointer-events-none">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <!-- Clicking Pankaj Saini goes directly to the very top -->
-            <button onclick="scrollToTop()" class="pointer-events-auto flex items-center gap-2.5 px-4 py-2 rounded-full bg-zinc-950/85 border border-white/10 backdrop-blur-md shadow-2xl group transition-all text-left">
+            <button onclick="scrollToTop()" class="pointer-events-auto flex items-center gap-2.5 px-4 py-2 rounded-full bg-zinc-950/85 border border-white/10 backdrop-blur-md shadow-2xl group transition-all text-left cursor-pointer">
                 <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
                     <svg class="icon-svg w-4 h-4" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
                 </div>
                 <span class="font-mono font-bold tracking-tight text-white text-sm group-hover:text-emerald-400 transition-colors">&lt;Pankaj Saini /&gt;</span>
             </button>
 
-            <!-- Nav Links without "home" -->
-            <nav class="hidden md:flex items-center gap-8 px-6 py-2.5 rounded-full bg-zinc-950/75 border border-white/10 backdrop-blur-md text-xs font-mono text-zinc-400 pointer-events-auto shadow-2xl">
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 px-6 py-2.5 rounded-full bg-zinc-950/80 border border-white/10 backdrop-blur-md text-xs font-mono text-zinc-400 pointer-events-auto shadow-2xl">
                 <a href="#experience" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
                     <svg class="icon-svg w-3.5 h-3.5 text-emerald-500" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                     <span>./experience</span>
@@ -174,78 +189,86 @@
 
     <!-- ==================== HERO SECTION (STICKY STAGE) ==================== -->
     <section id="hero" class="curtain-hero flex flex-col justify-center items-center px-6 overflow-hidden">
-        <!-- Ambient Backlight -->
-        <div class="absolute w-[500px] h-[500px] bg-emerald-500/10 blur-[140px] rounded-full pointer-events-none -top-10 left-1/2 -translate-x-1/2"></div>
-        <div class="absolute w-[350px] h-[350px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none bottom-10 right-10"></div>
+        <!-- Ambient Atmosphere Radiance -->
+        <div class="absolute w-[560px] h-[560px] bg-emerald-500/10 blur-[150px] rounded-full pointer-events-none -top-12 left-1/2 -translate-x-1/2"></div>
+        <div class="absolute w-[400px] h-[400px] bg-cyan-500/10 blur-[130px] rounded-full pointer-events-none bottom-12 right-12"></div>
 
-        <div class="max-w-7xl w-full mx-auto grid lg:grid-cols-12 gap-8 items-center h-full pt-16 pb-12 relative z-10">
+        <div class="max-w-7xl w-full mx-auto grid lg:grid-cols-12 gap-8 items-center h-full pt-20 pb-12 relative z-10">
 
             <!-- Left: Hero Headline & Summary -->
             <div class="lg:col-span-4 flex flex-col justify-center text-left space-y-6">
                 <div class="w-16 h-1 bg-emerald-500 rounded-full mb-1"></div>
-                <div class="inline-flex items-center gap-2 text-emerald-400 text-xs font-mono bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full w-max">
+                <div class="inline-flex items-center gap-2 text-emerald-400 text-xs font-mono bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-1.5 rounded-full w-max shadow-sm">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                     <span>Ready for Software Engineering Roles</span>
                 </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
                     I'm <span class="text-white">Pankaj Saini</span>,<br>
                     a <span class="text-gradient">Full Stack Developer.</span>
                 </h1>
                 
-                <!-- Updated pitch copy with Express and Backend Services -->
                 <p class="text-zinc-400 text-sm leading-relaxed max-w-sm">
                     Crafting production-grade architectures bridging high-velocity Angular & React interfaces with resilient NestJS & Express backend services.
                 </p>
 
-                <!-- Execute CTA Button (Lifts curtain up to reveal metrics/numbers) -->
+                <!-- Execute Portfolio Action -->
                 <div class="pt-2">
-                    <button onclick="liftCurtain()" class="btn-glow px-6 py-3 rounded-xl bg-emerald-500 text-zinc-950 font-mono font-bold text-xs uppercase tracking-wider flex items-center gap-2.5 hover:bg-emerald-400 transition-all cursor-pointer">
+                    <button onclick="liftCurtain()" class="btn-glow px-6 py-3.5 rounded-xl bg-emerald-500 text-zinc-950 font-mono font-bold text-xs uppercase tracking-wider flex items-center gap-2.5 hover:bg-emerald-400 transition-all cursor-pointer shadow-lg shadow-emerald-500/20">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                         <span>Execute Portfolio</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Center: Portrait Silhouette Container -->
-            <div class="lg:col-span-4 flex justify-center items-end relative h-full max-h-[580px]">
-                <div class="relative w-full max-w-[380px] h-full flex items-end justify-center">
-                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-500/20 via-transparent to-transparent rounded-full filter blur-2xl"></div>
+            <!-- Center: Portrait Silhouette Container With User Image -->
+            <div class="lg:col-span-4 flex justify-center items-end relative h-full max-h-[600px]">
+                <div class="relative w-full max-w-[390px] h-full flex items-end justify-center">
+                    
+                    <!-- Backlight behind portrait -->
+                    <div class="absolute inset-x-6 top-8 bottom-12 portrait-mesh rounded-[2.5rem] filter blur-xl"></div>
 
-                    <!-- Cutout Container -->
-                    <div class="relative w-full h-[520px] rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-zinc-900/60 to-black p-2 shadow-2xl flex flex-col justify-end items-center group">
+                    <!-- Cutout Container with Dark Border Styling -->
+                    <div class="relative w-full h-[530px] rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-zinc-900/40 via-zinc-950 to-black p-2.5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] flex flex-col justify-end items-center group">
+                        
+                        <!-- Portrait Image (Pankaj.jpeg) -->
                         <img 
                             src="assets/Pankaj.jpeg" 
                             alt="Pankaj Saini" 
-                            class="absolute inset-0 w-full h-full object-cover object-top opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 fade-mask-bottom"
+                            class="absolute inset-0 w-full h-full object-cover object-top filter contrast-[1.04] brightness-[0.98] group-hover:scale-[1.03] transition-all duration-700 ease-out"
                         />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                         
-                        <!-- Floating Location Status -->
-                        <div class="relative z-10 w-full p-4 mb-2 bg-zinc-950/85 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-between">
+                        <!-- Subtle Shadow Vignette to blend image naturally into pure black base -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none"></div>
+                        <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl pointer-events-none"></div>
+
+                        <!-- Floating Base Details Card -->
+                        <div class="relative z-10 w-full p-4 mb-1.5 bg-zinc-950/85 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-between shadow-2xl">
                             <div>
-                                <p class="text-[10px] text-zinc-400 font-mono">Current Base</p>
+                                <p class="text-[10px] text-zinc-400 font-mono">Location Base</p>
                                 <p class="text-xs font-bold text-white flex items-center gap-1.5">
                                     <svg class="icon-svg w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
                                     <span>Noida, UP, India</span>
                                 </p>
                             </div>
-                            <span class="px-2.5 py-1 text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-md">Online</span>
+                            <span class="px-2.5 py-1 text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 rounded-md flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right: About Snapshot & Interactive Config Code -->
+            <!-- Right: About Snapshot & Developer Config -->
             <div class="lg:col-span-4 flex flex-col justify-between space-y-6">
                 <!-- About Snapshot Card -->
-                <div class="space-y-2 border-l-2 border-emerald-500/60 pl-4">
+                <div class="space-y-2 border-l-2 border-emerald-500/70 pl-4 py-1">
                     <p class="text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-semibold">About Me</p>
                     <p class="text-zinc-300 text-xs leading-relaxed">
                         Software Engineer at Mathesis Labs. Core developer responsible for building and orchestrating the complete Dentistry AI Platform ecosystem — directing the web portal, scalable backend APIs, and native mobile applications from inception to production.
                     </p>
                 </div>
 
-                <!-- Config Preview Console with backend & tools updated -->
+                <!-- Config Terminal Console -->
                 <div class="glass-card overflow-hidden text-xs font-mono border-zinc-800/80 shadow-2xl">
                     <div class="flex items-center justify-between px-3.5 py-2.5 bg-zinc-900/90 border-b border-white/5">
                         <div class="flex items-center gap-1.5">
@@ -255,7 +278,7 @@
                         </div>
                         <span class="text-zinc-500 text-[10px]">pankaj_core.ts</span>
                     </div>
-                    <div class="p-3.5 space-y-1 text-[11px] leading-5 text-zinc-300">
+                    <div class="p-4 space-y-1 text-[11px] leading-5 text-zinc-300">
                         <p><span class="text-rose-400">const</span> <span class="text-cyan-300">engineer</span> = {</p>
                         <p class="pl-4">name: <span class="text-amber-300">'Pankaj Saini'</span>,</p>
                         <p class="pl-4">frontend: [<span class="text-emerald-400">'Angular'</span>, <span class="text-emerald-400">'React'</span>],</p>
@@ -268,26 +291,23 @@
                     </div>
                 </div>
 
-                <!-- Connect Links & Visible SVG Icons -->
+                <!-- Connect Links with Full SVG Fill Fix -->
                 <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
                     <a href="assets/Pankaj_Saini_Resume.pdf" download="Pankaj_Saini_Resume.pdf" class="w-full text-center px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 hover:border-emerald-500 text-zinc-300 hover:text-white font-mono text-xs transition-colors flex items-center justify-center gap-2">
                         <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/></svg>
                         <span>resume.pdf</span>
                     </a>
                     <div class="flex items-center gap-2.5 w-full justify-center sm:justify-end">
-                        <!-- GitHub Icon -->
                         <a href="https://github.com/Pankaj-Saini-1001" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-zinc-900/90 border border-zinc-700 hover:border-emerald-400 flex items-center justify-center text-zinc-200 hover:text-emerald-400 transition-colors" title="GitHub">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </a>
-                        <!-- LinkedIn Icon -->
                         <a href="https://www.linkedin.com/in/pankaj-saini-1505271b7/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-zinc-900/90 border border-zinc-700 hover:border-emerald-400 flex items-center justify-center text-zinc-200 hover:text-emerald-400 transition-colors" title="LinkedIn">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
                         </a>
-                        <!-- Email Icon -->
                         <a href="mailto:mrpankajsaini1001@gmail.com" class="w-10 h-10 rounded-xl bg-zinc-900/90 border border-zinc-700 hover:border-emerald-400 flex items-center justify-center text-zinc-200 hover:text-emerald-400 transition-colors" title="Email">
                             <svg class="icon-svg w-4 h-4" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                         </a>
@@ -297,14 +317,14 @@
         </div>
     </section>
 
-    <!-- ==================== CURTAIN CONTENT (SLIDES UP OVER HERO) ==================== -->
+    <!-- ==================== CURTAIN CONTENT ==================== -->
     <div id="curtain" class="curtain-content border-t border-white/10">
 
-        <!-- 4-COLUMN ANIMATED METRICS -->
+        <!-- 4-COLUMN STATS COUNTERS -->
         <section class="max-w-7xl mx-auto px-6 py-16">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Col 1: Experience -->
-                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden">
+                <!-- Col 1 -->
+                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden fade-in-section">
                     <div class="text-4xl lg:text-5xl font-extrabold text-white font-mono mb-2 flex items-center">
                         <span class="counter" data-target="2">0</span><span class="text-emerald-500">+</span>
                     </div>
@@ -312,8 +332,8 @@
                     <p class="text-zinc-500 text-xs mt-1">Enterprise & SaaS engineering</p>
                 </div>
 
-                <!-- Col 2: Core Stacks (Updated text) -->
-                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden">
+                <!-- Col 2 -->
+                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden fade-in-section" style="transition-delay: 100ms;">
                     <div class="text-4xl lg:text-5xl font-extrabold text-white font-mono mb-2 flex items-center">
                         <span class="counter" data-target="4">0</span><span class="text-cyan-400">+</span>
                     </div>
@@ -321,17 +341,17 @@
                     <p class="text-zinc-400 text-xs mt-1">Angular, NestJS, React, and Express</p>
                 </div>
 
-                <!-- Col 3: Projects Worked (Updated metric) -->
-                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden">
+                <!-- Col 3 -->
+                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden fade-in-section" style="transition-delay: 200ms;">
                     <div class="text-4xl lg:text-5xl font-extrabold text-white font-mono mb-2 flex items-center">
-                        <span class="counter" data-target="5">0</span><span class="text-blue-500">+</span>
+                        <span class="counter" data-target="3">0</span><span class="text-blue-500">+</span>
                     </div>
                     <div class="text-xs font-mono text-blue-400 uppercase tracking-wider font-semibold">Projects Built & Shipped</div>
                     <p class="text-zinc-500 text-xs mt-1">Production SaaS, FinTech & Enterprise</p>
                 </div>
 
-                <!-- Col 4: Commitment & Code Quality -->
-                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden">
+                <!-- Col 4 -->
+                <div class="glass-card p-6 border-zinc-800/60 relative overflow-hidden fade-in-section" style="transition-delay: 300ms;">
                     <div class="text-4xl lg:text-5xl font-extrabold text-white font-mono mb-2 flex items-center">
                         <span class="counter" data-target="100">0</span><span class="text-emerald-400">%</span>
                     </div>
@@ -341,9 +361,9 @@
             </div>
         </section>
 
-        <!-- ==================== EXPERIENCE & TRAJECTORY ==================== -->
+        <!-- ==================== EXPERIENCE TRAJECTORY ==================== -->
         <section id="experience" class="py-20 px-6 max-w-5xl mx-auto border-t border-zinc-900">
-            <div class="mb-14">
+            <div class="mb-14 fade-in-section">
                 <div class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full mb-3">
                     <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><line x1="3" x2="9" y1="12" y2="12"/><line x1="15" x2="21" y1="12" y2="12"/></svg>
                     <span>~/career-trajectory</span>
@@ -352,11 +372,10 @@
             </div>
 
             <div class="space-y-10 relative">
-                <!-- Timeline Line -->
                 <div class="absolute left-4 md:left-[180px] top-4 bottom-4 w-px bg-zinc-800"></div>
 
                 <!-- 1. Full-time: Feb 2025 - Present -->
-                <div class="relative flex flex-col md:flex-row gap-6 md:gap-12 pl-12 md:pl-0">
+                <div class="relative flex flex-col md:flex-row gap-6 md:gap-12 pl-12 md:pl-0 fade-in-section">
                     <div class="md:w-[180px] md:text-right shrink-0 pt-1">
                         <span class="font-mono text-xs text-emerald-400 font-bold block">Feb 2025 - Present</span>
                         <span class="font-mono text-[10px] text-zinc-500">Software Developer</span>
@@ -388,7 +407,7 @@
                 </div>
 
                 <!-- 2. Trainee: Nov 2024 - 31 Jan 2025 -->
-                <div class="relative flex flex-col md:flex-row gap-6 md:gap-12 pl-12 md:pl-0">
+                <div class="relative flex flex-col md:flex-row gap-6 md:gap-12 pl-12 md:pl-0 fade-in-section" style="transition-delay: 100ms;">
                     <div class="md:w-[180px] md:text-right shrink-0 pt-1">
                         <span class="font-mono text-xs text-zinc-400 block">Nov 2024 - Jan 31, 2025</span>
                         <span class="font-mono text-[10px] text-zinc-500">Developer Trainee</span>
@@ -416,7 +435,7 @@
                 </div>
 
                 <!-- 3. Education: B.Tech -->
-                <div class="relative flex flex-col md:flex-row gap-6 md:gap-12 pl-12 md:pl-0">
+                <div class="relative flex flex-col md:flex-row gap-6 md:gap-12 pl-12 md:pl-0 fade-in-section" style="transition-delay: 200ms;">
                     <div class="md:w-[180px] md:text-right shrink-0 pt-1">
                         <span class="font-mono text-xs text-zinc-400 block">2020 - 2024</span>
                         <span class="font-mono text-[10px] text-zinc-500">Degree</span>
@@ -436,9 +455,9 @@
             </div>
         </section>
 
-        <!-- ==================== SYSTEM ARCHITECTURES & PROJECTS ==================== -->
+        <!-- ==================== SYSTEM ARCHITECTURES ==================== -->
         <section id="projects" class="py-20 px-6 max-w-7xl mx-auto border-t border-zinc-900">
-            <div class="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div class="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-4 fade-in-section">
                 <div>
                     <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full mb-3">
                         <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/></svg>
@@ -452,7 +471,7 @@
             <div class="grid lg:grid-cols-2 gap-8">
 
                 <!-- 1. Dentistry AI Platform -->
-                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group">
+                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group fade-in-section">
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="px-3 py-1 rounded-md text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold flex items-center gap-1.5">
@@ -477,7 +496,7 @@
                 </div>
 
                 <!-- 2. EMI Setu -->
-                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group">
+                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group fade-in-section" style="transition-delay: 150ms;">
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="px-3 py-1 rounded-md text-[11px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold flex items-center gap-1.5">
@@ -503,7 +522,7 @@
                 </div>
 
                 <!-- 3. DevTrack -->
-                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group">
+                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group fade-in-section">
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="px-3 py-1 rounded-md text-[11px] font-mono bg-purple-500/10 text-purple-400 border border-purple-500/20 font-semibold flex items-center gap-1.5">
@@ -527,8 +546,8 @@
                     </div>
                 </div>
 
-                <!-- 4. AEW Web Application (Updated Business Domain) -->
-                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group">
+                <!-- 4. AEW Web Application -->
+                <div class="glass-card p-7 border-zinc-800/80 flex flex-col justify-between group fade-in-section" style="transition-delay: 150ms;">
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="px-3 py-1 rounded-md text-[11px] font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold flex items-center gap-1.5">
@@ -555,9 +574,9 @@
             </div>
         </section>
 
-        <!-- ==================== TECH STACK MATRIX (SINGLE ROW LAYOUT) ==================== -->
+        <!-- ==================== TECH STACK MATRIX (SINGLE ROW) ==================== -->
         <section id="stack" class="py-20 px-6 max-w-7xl mx-auto border-t border-zinc-900">
-            <div class="mb-14 text-center">
+            <div class="mb-14 text-center fade-in-section">
                 <div class="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full mb-3">
                     <svg class="icon-svg w-3.5 h-3.5" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
                     <span>~/skills --matrix</span>
@@ -566,11 +585,10 @@
                 <p class="text-zinc-500 text-xs font-mono mt-2">Core expertise across clients, backends, databases, and tooling</p>
             </div>
 
-            <!-- Single Row Grid with 4 Clean Columns -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                <!-- 1. Frontend & Mobile (Combined) -->
-                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between">
+                <!-- 1. Frontend & Mobile -->
+                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between fade-in-section">
                     <div>
                         <div class="flex items-center gap-3 mb-5">
                             <div class="w-9 h-9 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400">
@@ -594,7 +612,7 @@
                             <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
                                 <div class="flex justify-between items-center text-xs mb-1">
                                     <span class="font-bold text-white">React.js</span>
-                                    <span class="font-mono text-[10px] text-cyan-400">Proficient</span>
+                                    <span class="font-mono text-[10px] text-cyan-400">Core Expertise</span>
                                 </div>
                                 <p class="text-[11px] text-zinc-400">Functional components, state hooks, reactive UI flows.</p>
                             </div>
@@ -611,7 +629,7 @@
                 </div>
 
                 <!-- 2. Backend Services -->
-                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between">
+                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between fade-in-section" style="transition-delay: 100ms;">
                     <div>
                         <div class="flex items-center gap-3 mb-5">
                             <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
@@ -643,7 +661,7 @@
                             <div class="p-3 bg-zinc-900/60 rounded-xl border border-white/5">
                                 <div class="flex justify-between items-center text-xs mb-1">
                                     <span class="font-bold text-white">Java Spring Boot</span>
-                                    <span class="font-mono text-[10px] text-zinc-400">POCs Experience</span>
+                                    <span class="font-mono text-[10px] text-zinc-400">POCs & Practicals</span>
                                 </div>
                                 <p class="text-[11px] text-zinc-400">Hands-on microservice prototypes and REST endpoint services.</p>
                             </div>
@@ -652,7 +670,7 @@
                 </div>
 
                 <!-- 3. Database & Languages -->
-                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between">
+                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between fade-in-section" style="transition-delay: 200ms;">
                     <div>
                         <div class="flex items-center gap-3 mb-5">
                             <div class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
@@ -692,8 +710,8 @@
                     </div>
                 </div>
 
-                <!-- 4. Tools & Environments (Separated) -->
-                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between">
+                <!-- 4. Dev Tools & IDEs -->
+                <div class="glass-card p-6 border-zinc-800 flex flex-col justify-between fade-in-section" style="transition-delay: 300ms;">
                     <div>
                         <div class="flex items-center gap-3 mb-5">
                             <div class="w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
@@ -736,13 +754,13 @@
             </div>
         </section>
 
-        <!-- ==================== FOOTER ==================== -->
+        <!-- ==================== STAGE REVEAL FOOTER ==================== -->
         <footer class="relative bg-black border-t border-zinc-900 py-16 px-6 overflow-hidden">
             <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-32 bg-emerald-500/10 blur-[100px] pointer-events-none"></div>
 
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
                 <div class="text-center md:text-left space-y-2">
-                    <button onclick="scrollToTop()" class="text-2xl font-bold tracking-tight text-white flex items-center justify-center md:justify-start gap-2 hover:text-emerald-400 transition-colors">
+                    <button onclick="scrollToTop()" class="text-2xl font-bold tracking-tight text-white flex items-center justify-center md:justify-start gap-2 hover:text-emerald-400 transition-colors cursor-pointer">
                         <svg class="icon-svg w-6 h-6 text-emerald-400" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                         <span>Pankaj Saini</span>
                     </button>
@@ -751,7 +769,7 @@
                     </p>
                 </div>
 
-                <!-- Footer Socials with SVG Icons -->
+                <!-- Footer Socials -->
                 <div class="flex items-center gap-3">
                     <a href="mailto:mrpankajsaini1001@gmail.com" class="w-11 h-11 rounded-xl bg-zinc-900/90 border border-zinc-700 hover:border-emerald-400 flex items-center justify-center text-zinc-200 hover:text-emerald-400 transition-all hover:scale-105" title="Direct Email">
                         <svg class="icon-svg w-5 h-5" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -781,12 +799,10 @@
 
     <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // Scroll to the very top smoothly
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Execute Portfolio / Scroll to Curtain Content
         function liftCurtain() {
             const curtain = document.getElementById('curtain');
             if (curtain) {
@@ -795,31 +811,30 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Check if lucide exists and create icons
             if (window.lucide) {
                 lucide.createIcons();
             }
 
-            // Top Center Floating Arrow Visibility on Scroll
+            // Top Center Floating Button Reveal
             const topBtn = document.getElementById('center-top-btn');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 200) {
+                if (window.scrollY > 220) {
                     topBtn.classList.remove('opacity-0', 'pointer-events-none');
                     topBtn.classList.add('opacity-100', 'pointer-events-auto');
                 } else {
                     topBtn.classList.remove('opacity-100', 'pointer-events-auto');
                     topBtn.classList.add('opacity-0', 'pointer-events-none');
                 }
-            });
+            }, { passive: true });
 
-            // Animated Number Counters (Count from 0 up to target)
+            // Animated Number Counters with easing curve
             const counters = document.querySelectorAll('.counter');
             let countersStarted = false;
 
             const startCounters = () => {
                 counters.forEach(counter => {
                     const target = +counter.getAttribute('data-target');
-                    const duration = 1500;
+                    const duration = 1600;
                     const frameRate = 1000 / 60;
                     const totalFrames = Math.round(duration / frameRate);
                     let currentFrame = 0;
@@ -827,7 +842,6 @@
                     const updateCount = () => {
                         currentFrame++;
                         const progress = currentFrame / totalFrames;
-                        // Ease-out exponential
                         const currentVal = Math.round(target * (1 - Math.pow(2, -10 * progress)));
                         
                         counter.innerText = currentVal > target ? target : currentVal;
@@ -843,10 +857,10 @@
                 });
             };
 
-            // Observer for starting counter once curtain appears
+            // IntersectionObserver for Stat Counters
             const counterSection = document.querySelector('#curtain');
             if (counterSection) {
-                const observer = new IntersectionObserver((entries) => {
+                const counterObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting && !countersStarted) {
                             countersStarted = true;
@@ -855,8 +869,23 @@
                     });
                 }, { threshold: 0.1 });
 
-                observer.observe(counterSection);
+                counterObserver.observe(counterSection);
             }
+
+            // Formal Smooth Reveal Transitions on Scroll
+            const revealElements = document.querySelectorAll('.fade-in-section');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
         });
     </script>
 </body>
